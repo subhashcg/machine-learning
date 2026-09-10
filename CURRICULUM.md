@@ -5,11 +5,11 @@ Maths starts at zero and arrives exactly when a model needs it.
 
 | | |
 |---|---|
-| **Duration** | 56 weeks |
+| **Duration** | 58 weeks |
 | **Phases** | 10 |
 | **Projects shipped** | 10 |
 | **Pace** | 10–20 hrs/week |
-| **Total effort** | ~840 hrs |
+| **Total effort** | ~870 hrs |
 
 ---
 
@@ -409,6 +409,7 @@ a toy.
 - [ ] **Validation** — train/validation/test, cross-validation, stratified and grouped splits
 - [ ] **Data leakage** — the failure mode that quietly ruins real projects; how to spot it
 - [ ] **Feature engineering** — scaling, one-hot/ordinal/target encoding, binning, interactions
+- [ ] **Text as features** — bag of words and TF-IDF, the representation Step 8.2 builds on
 - [ ] **Imbalanced classes** — resampling, class weights, and moving the threshold
 - [ ] **Classification metrics** — where accuracy fails, precision/recall/F1, ROC-AUC versus PR-AUC
 - [ ] **Calibration** — making predicted probabilities mean what they say
@@ -494,7 +495,7 @@ for each. Then train a small transformer on a text corpus you actually care abou
 ---
 
 ## Phase 8 — Building with foundation models
-`Weeks 48–51` · `~60 hrs`
+`Weeks 48–53` · `~90 hrs`
 
 > Use large language models as components in a system — and evaluate them
 > properly, which is the part almost everyone skips and the part that makes the
@@ -508,13 +509,30 @@ for each. Then train a small transformer on a text corpus you actually care abou
 - [ ] **The Claude API** — messages, system prompts, streaming, tool use
 - [ ] **Prompting as engineering** — versioned, tested, and measured, not folklore
 - [ ] **Structured output** — schemas, validation, and handling the malformed case
-- [ ] **Embeddings and vector search** — similarity, indexes, and chunking strategy
-- [ ] **Retrieval-augmented generation** — retrieval, reranking, and why naive RAG underperforms
 - [ ] **Agents and tool loops** — what they add, and when a plain pipeline is the better answer
 
-### Step 8.2 — Making it trustworthy
+### Step 8.2 — Search and retrieval
 
-`~18 hrs` · `git switch -c step/8.2-making-it-trustworthy`
+`~30 hrs` · `git switch -c step/8.2-search-and-retrieval`
+
+*Lexical first, deliberately. Dense retrieval then arrives as the answer to a
+problem you have already felt, rather than as the default everyone reaches for.*
+
+- [ ] **Text as vectors** — bag of words, TF-IDF, and the vocabulary-mismatch problem that motivates everything else
+- [ ] **BM25** — term saturation, length normalisation, and why it is still the baseline you must beat
+- [ ] **Inverted indexes** — postings lists, and how lexical search stays fast at scale
+- [ ] **Dense retrieval** — bi-encoders, contrastive training, and what embeddings catch that BM25 cannot
+- [ ] **Approximate nearest neighbour** — HNSW, IVF, product quantisation, and the recall/latency trade
+- [ ] **Learned sparse retrieval** — SPLADE, term expansion, sparse vectors with learned weights
+- [ ] **Hybrid search** — reciprocal rank fusion, and when combining lexical and dense actually helps
+- [ ] **Cross-encoder reranking** — why retrieval is two-stage: cheap recall, then expensive precision
+- [ ] **Chunking** — the preprocessing choice that decides more than the model does
+- [ ] **Evaluating retrieval** — recall@k, MRR, NDCG, and building a labelled judgement set
+- [ ] **Putting it together: RAG** — retrieval as a system, and why naive RAG underperforms
+
+### Step 8.3 — Making it trustworthy
+
+`~18 hrs` · `git switch -c step/8.3-making-it-trustworthy`
 
 - [ ] **Building an eval set** — the discipline that turns prompting into engineering
 - [ ] **LLM-as-judge** — how to use it and the biases it brings
@@ -523,20 +541,21 @@ for each. Then train a small transformer on a text corpus you actually care abou
 - [ ] **Cost, latency and caching** — the constraints that shape real systems
 - [ ] **Failure modes** — hallucination, prompt injection, and practical mitigations
 
-### Step 8.3 — 🔨 Project: A retrieval application with a real eval suite
+### Step 8.4 — 🔨 Project: A retrieval application with a real eval suite
 
-`~17 hrs` · `git switch -c step/8.3-project-a-retrieval-application-with-a-real-eval-suite`
+`~17 hrs` · `git switch -c step/8.4-project-a-retrieval-application-with-a-real-eval-suite`
 
-Build RAG over a corpus you own and care about. The requirement that makes it
-count: an evaluation set that catches regressions, and a measured comparison
-against a no-retrieval baseline. Most such projects skip this; yours won't.
+Build RAG over a corpus you own and care about. Two requirements make it count:
+an evaluation set that catches regressions, and a measured comparison against
+both a no-retrieval baseline and a plain BM25 one. If BM25 wins, that is a
+result worth reporting — and most such projects never find out.
 
 *Ships: a working app plus the evals that prove it works.*
 
 ---
 
 ## Phase 9 — Production
-`Weeks 52–56` · `~75 hrs`
+`Weeks 54–58` · `~75 hrs`
 
 > Ship something other people can use and you can maintain. A model in a notebook
 > has produced no value yet — this phase closes that gap.
