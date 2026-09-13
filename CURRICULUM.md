@@ -34,35 +34,61 @@ read in interviews.
 
 ---
 
+## Phase, step, topic
+
+Three levels, and each one is a different unit of work.
+
+| | what it is | how many | unit of work |
+|---|---|---|---|
+| **Phase** | a major area of the course | 10 | weeks; ends in a project |
+| **Step** | a section within a phase | 39 | **one branch, one pull request** |
+| **Topic** | one checklist item within a step | — | **one sitting, one commit** |
+
+So `Phase 1 → Step 1.2 → "The dot product"` reads as: the linear algebra phase,
+the from-nothing maths step, the topic you are working through today.
+
 ## How to work a step
 
-Each phase is broken into numbered **steps**. A step is one branch, one focus, one
-merge — small enough to finish in a sitting or two, and self-contained enough that
-the branch tells a story on its own.
+A step is one branch. Everything for it lives in `phase-0N/step-N.M-slug/`, and
+the branch stays open until every topic in the step is done.
 
 ```bash
 git switch main
 git switch -c step/1.2-linear-algebra-from-nothing   # the command is under each step
-# ...work through the checklist, committing as you go...
-git switch main
-git merge --no-ff step/1.2-linear-algebra-from-nothing
 ```
 
-Use `--no-ff` so the merge commit survives — your `git log --graph` then reads as a
-record of the course, one bubble per step.
+**Per topic — commit and push.** Finish a topic, tick its box, write it up in
+`NOTES.md`, then commit and push to the step branch. Small commits, one per topic,
+so the history shows the order you learned things in.
 
-**What lives in a step branch**
-- A directory `phase-0N/step-N.M-slug/` with the code and notes for that step
-- Small, frequent commits — one per concept, not one per step
-- A `NOTES.md` in the step directory: what surprised you, what you got wrong first
+```bash
+git add -A
+git commit -m "Topic: the dot product"
+git push
+```
+
+**Per step — open the pull request.** Only when every topic in the step is
+finished. The PR is the step's review surface; merge it with `--no-ff` (or the
+GitHub merge-commit button) so one merge bubble marks each completed step.
+
+```bash
+gh pr create --base main --title "Step 1.2 — Linear algebra, from nothing"
+gh pr merge --merge --delete-branch
+```
 
 **A step is done when** every box in it is ticked, the code runs from a clean
-checkout, and you could explain each item to someone else without looking it up.
+checkout, and you could explain each topic to someone else without looking it up.
 Tick the boxes in this file as you go and commit that too — the diff is your
 progress log.
 
+**What lives in a step directory**
+- `README.md` — the step's topics
+- `reference/NN-topic.md` — lookup cards: syntax, costs, gotchas
+- `exercises/` — the code you wrote
+- `NOTES.md` — your own words: what surprised you, what you got wrong first
+
 **Steps ending in a 🔨 project** are the phase's payoff: they close the phase and
-are the branch worth keeping tidy, since these are the ones other people will read.
+are the branch worth keeping tidy, since these are the ones other people read.
 
 ---
 
