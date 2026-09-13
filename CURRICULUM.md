@@ -9,7 +9,6 @@ Maths starts at zero and arrives exactly when a model needs it.
 | **Phases** | 10 |
 | **Projects shipped** | 10 |
 | **Pace** | 10–20 hrs/week |
-| **Total effort** | ~870 hrs |
 
 ---
 
@@ -68,7 +67,7 @@ are the branch worth keeping tidy, since these are the ones other people will re
 ---
 
 ## Phase 0 — Python that holds up
-`Weeks 1–3` · `~45 hrs`
+`Weeks 1–3`
 
 > Stop fighting the language. Everything after this assumes you can write,
 > structure and test Python without thinking about it — so this is the only
@@ -76,7 +75,7 @@ are the branch worth keeping tidy, since these are the ones other people will re
 
 ### Step 0.1 — The language
 
-`~18 hrs` · `git switch -c step/0.1-the-language`
+`git switch -c step/0.1-the-language`
 
 - [ ] **Data structures** — list, dict, set, tuple: what each costs and when to reach for it
 - [ ] **Comprehensions and generators** — `yield`, iterators, and why lazy evaluation matters on big data
@@ -89,7 +88,7 @@ are the branch worth keeping tidy, since these are the ones other people will re
 
 ### Step 0.2 — Working like an engineer
 
-`~15 hrs` · `git switch -c step/0.2-working-like-an-engineer`
+`git switch -c step/0.2-working-like-an-engineer`
 
 - [ ] **pytest** — test functions, fixtures, `parametrize`, and what's worth testing
 - [ ] **Debugging** — reading a traceback properly, `breakpoint()`, stepping through code
@@ -99,7 +98,7 @@ are the branch worth keeping tidy, since these are the ones other people will re
 
 ### Step 0.3 — 🔨 Project: A command-line dataset inspector
 
-`~12 hrs` · `git switch -c step/0.3-project-a-command-line-dataset-inspector`
+`git switch -c step/0.3-project-a-command-line-dataset-inspector`
 
 Point it at any CSV and it reports column types, missing-value counts, ranges and
 a text histogram per column. No pandas — just the standard library, so you feel
@@ -110,7 +109,7 @@ exactly what pandas will do for you later.
 ---
 
 ## Phase 1 — NumPy and the language of arrays
-`Weeks 4–9` · `~90 hrs`
+`Weeks 4–9`
 
 > Learn to think in shapes instead of loops. Linear algebra is taught here from
 > nothing, because a matrix multiply and a NumPy array are the same idea seen
@@ -118,7 +117,7 @@ exactly what pandas will do for you later.
 
 ### Step 1.1 — NumPy
 
-`~35 hrs` · `git switch -c step/1.1-numpy`
+`git switch -c step/1.1-numpy`
 
 - [ ] **The ndarray** — dtype, shape, ndim, and how it sits in memory
 - [ ] **Creating arrays** — `arange`, `linspace`, `zeros`, `eye`, random
@@ -135,7 +134,7 @@ exactly what pandas will do for you later.
 
 ### Step 1.2 — 📐 Maths: Linear algebra, from nothing
 
-`~35 hrs` · `git switch -c step/1.2-linear-algebra-from-nothing`
+`git switch -c step/1.2-linear-algebra-from-nothing`
 
 *Everything below is taught assuming you have never seen it. Each idea is
 implemented in NumPy the same day you meet it.*
@@ -153,7 +152,7 @@ implemented in NumPy the same day you meet it.*
 
 ### Step 1.3 — 🔨 Project: Image transforms and posterisation, from scratch
 
-`~20 hrs` · `git switch -c step/1.3-project-image-transforms-and-posterisation-from-scratch`
+`git switch -c step/1.3-project-image-transforms-and-posterisation-from-scratch`
 
 Load an image as an array and implement rotation, scaling and shear as matrix
 multiplications you write yourself. Then implement k-means from scratch to reduce
@@ -164,14 +163,14 @@ it to eight colours. Rule: no Python loop may touch a pixel.
 ---
 
 ## Phase 2 — Data that's actually messy
-`Weeks 10–15` · `~90 hrs`
+`Weeks 10–15`
 
 > Real data arrives broken. This phase is about getting it into a shape a model
 > can use — and being able to defend every judgement call you made along the way.
 
 ### Step 2.1 — pandas
 
-`~35 hrs` · `git switch -c step/2.1-pandas`
+`git switch -c step/2.1-pandas`
 
 - [ ] **Series and DataFrame** — and why the index is the whole point
 - [ ] **Reading data** — csv, parquet, json, SQL, Excel; controlling dtypes on the way in
@@ -188,7 +187,7 @@ it to eight colours. Rule: no Python loop may touch a pixel.
 
 ### Step 2.2 — SQL
 
-`~20 hrs` · `git switch -c step/2.2-sql`
+`git switch -c step/2.2-sql`
 
 - [ ] **SELECT, WHERE, ORDER BY, LIMIT** — the shape of every query
 - [ ] **JOINs** — inner, left, full, and why your row count just tripled
@@ -199,7 +198,7 @@ it to eight colours. Rule: no Python loop may touch a pixel.
 
 ### Step 2.3 — 📐 Maths: Descriptive statistics
 
-`~10 hrs` · `git switch -c step/2.3-descriptive-statistics`
+`git switch -c step/2.3-descriptive-statistics`
 
 - [ ] **Centre** — mean, median, mode, and when the mean lies to you
 - [ ] **Spread** — variance, standard deviation, IQR, range
@@ -209,7 +208,7 @@ it to eight colours. Rule: no Python loop may touch a pixel.
 
 ### Step 2.4 — 🔨 Project: End-to-end analysis of a genuinely messy public dataset
 
-`~25 hrs` · `git switch -c step/2.4-project-end-to-end-analysis-of-a-genuinely-messy-public-dataset`
+`git switch -c step/2.4-project-end-to-end-analysis-of-a-genuinely-messy-public-dataset`
 
 Pick something real and unclean — city open data, scraped listings, government
 records. Ingest, clean, and document every decision, then write findings with
@@ -220,14 +219,14 @@ charts for a non-technical reader. This is the first piece that belongs in a por
 ---
 
 ## Phase 3 — Seeing it and saying it
-`Weeks 16–17` · `~30 hrs`
+`Weeks 16–17`
 
 > A chart is an argument. Learn to make one that changes a mind — and to
 > recognise the moment a chart starts lying, including when it's yours.
 
 ### Step 3.1 — matplotlib and seaborn
 
-`~15 hrs` · `git switch -c step/3.1-matplotlib-and-seaborn`
+`git switch -c step/3.1-matplotlib-and-seaborn`
 
 - [ ] **The figure/axes model** — the thing everyone skips and later regrets skipping
 - [ ] **Choosing the mark** — scatter, line, bar, histogram, box, violin, heatmap: when each is right
@@ -239,7 +238,7 @@ charts for a non-technical reader. This is the first piece that belongs in a por
 
 ### Step 3.2 — 📐 Maths: Distributions, visually
 
-`~5 hrs` · `git switch -c step/3.2-distributions-visually`
+`git switch -c step/3.2-distributions-visually`
 
 - [ ] **Histogram, KDE, ECDF** — three views of one distribution and what each hides
 - [ ] **Binning** — how bin width manufactures patterns that aren't there
@@ -247,7 +246,7 @@ charts for a non-technical reader. This is the first piece that belongs in a por
 
 ### Step 3.3 — 🔨 Project: Rebuild a misleading chart
 
-`~10 hrs` · `git switch -c step/3.3-project-rebuild-a-misleading-chart`
+`git switch -c step/3.3-project-rebuild-a-misleading-chart`
 
 Find a published chart that distorts its data. Reproduce it faithfully, then build
 the honest version beside it, and write up precisely which choice did the
@@ -258,7 +257,7 @@ distorting. Short, sharp, and unusually memorable to a reader.
 ---
 
 ## Phase 4 — Probability and statistics
-`Weeks 18–23` · `~90 hrs`
+`Weeks 18–23`
 
 > Learn when a result is real. This is the phase that separates someone who can
 > run a model from someone who can be trusted with a decision — and it is the one
@@ -266,7 +265,7 @@ distorting. Short, sharp, and unusually memorable to a reader.
 
 ### Step 4.1 — 📐 Maths: Probability
 
-`~30 hrs` · `git switch -c step/4.1-probability`
+`git switch -c step/4.1-probability`
 
 - [ ] **Sample space and events** — the axioms, and counting properly
 - [ ] **Conditional probability and independence** — the source of most wrong intuitions
@@ -280,7 +279,7 @@ distorting. Short, sharp, and unusually memorable to a reader.
 
 ### Step 4.2 — 📐 Maths: Inference
 
-`~30 hrs` · `git switch -c step/4.2-inference`
+`git switch -c step/4.2-inference`
 
 - [ ] **Sampling distributions and standard error** — the idea everything else rests on
 - [ ] **Estimation** — point estimates, bias, and maximum likelihood
@@ -294,7 +293,7 @@ distorting. Short, sharp, and unusually memorable to a reader.
 
 ### Step 4.3 — Doing it in Python
 
-`~12 hrs` · `git switch -c step/4.3-doing-it-in-python`
+`git switch -c step/4.3-doing-it-in-python`
 
 - [ ] **scipy.stats** — distributions, tests, fitting
 - [ ] **statsmodels** — regression with the statistical output, not just predictions
@@ -302,7 +301,7 @@ distorting. Short, sharp, and unusually memorable to a reader.
 
 ### Step 4.4 — 🔨 Project: An A/B test, analysed end to end
 
-`~18 hrs` · `git switch -c step/4.4-project-an-a-b-test-analysed-end-to-end`
+`git switch -c step/4.4-project-an-a-b-test-analysed-end-to-end`
 
 Design the experiment, compute the sample size the effect needs, analyse a real or
 simulated result, and write the recommendation memo — including an explicit
@@ -313,14 +312,14 @@ statement of what evidence would have changed your conclusion.
 ---
 
 ## Phase 5 — Calculus and optimisation
-`Weeks 24–27` · `~60 hrs`
+`Weeks 24–27`
 
 > Understand what "training a model" physically is. By the end you will have built
 > the machinery that every model in the rest of this course runs on.
 
 ### Step 5.1 — 📐 Maths: Calculus, from nothing
 
-`~25 hrs` · `git switch -c step/5.1-calculus-from-nothing`
+`git switch -c step/5.1-calculus-from-nothing`
 
 *Taught for the one purpose it serves here: knowing which way is downhill.
 No integration techniques, no trigonometric identities.*
@@ -335,7 +334,7 @@ No integration techniques, no trigonometric identities.*
 
 ### Step 5.2 — Optimisation
 
-`~18 hrs` · `git switch -c step/5.2-optimisation`
+`git switch -c step/5.2-optimisation`
 
 - [ ] **Numerical differentiation** — finite differences, and where they break down
 - [ ] **Gradient descent** — the update rule implemented by hand on a surface you can see
@@ -346,7 +345,7 @@ No integration techniques, no trigonometric identities.*
 
 ### Step 5.3 — 🔨 Project: A tiny automatic differentiation engine
 
-`~17 hrs` · `git switch -c step/5.3-project-a-tiny-automatic-differentiation-engine`
+`git switch -c step/5.3-project-a-tiny-automatic-differentiation-engine`
 
 Build a scalar `Value` class that records a computation graph and back-propagates
 through it — roughly micrograd. Then fit a curve with it. You will extend this
@@ -358,7 +357,7 @@ a toy.
 ---
 
 ## Phase 6 — Classical machine learning
-`Weeks 28–37` · `~150 hrs`
+`Weeks 28–37`
 
 > The longest phase, and the core of the course. For every algorithm: derive the
 > maths, implement it in NumPy, then match your implementation against
@@ -369,7 +368,7 @@ a toy.
 
 ### Step 6.1 — 📐 Linear models
 
-`~25 hrs` · `git switch -c step/6.1-linear-models`
+`git switch -c step/6.1-linear-models`
 
 - [ ] **Linear regression** — least squares, the normal equation, and the same thing by gradient descent
 - [ ] **Bias–variance** — polynomial features, under- and overfitting, learning curves
@@ -378,7 +377,7 @@ a toy.
 
 ### Step 6.2 — 📐 Trees and ensembles
 
-`~20 hrs` · `git switch -c step/6.2-trees-and-ensembles`
+`git switch -c step/6.2-trees-and-ensembles`
 
 - [ ] **Decision trees** — entropy, Gini, information gain, pruning
 - [ ] **Random forests** — bagging, feature randomness, out-of-bag error
@@ -386,7 +385,7 @@ a toy.
 
 ### Step 6.3 — 📐 Distances, probabilities and margins
 
-`~18 hrs` · `git switch -c step/6.3-distances-probabilities-and-margins`
+`git switch -c step/6.3-distances-probabilities-and-margins`
 
 - [ ] **k-nearest neighbours** — and the curse of dimensionality it runs into
 - [ ] **Naive Bayes** — the independence assumption and why it works anyway
@@ -394,7 +393,7 @@ a toy.
 
 ### Step 6.4 — 📐 Unsupervised learning
 
-`~17 hrs` · `git switch -c step/6.4-unsupervised-learning`
+`git switch -c step/6.4-unsupervised-learning`
 
 - [ ] **Clustering** — k-means, hierarchical, DBSCAN, and how to tell if a clustering is real
 - [ ] **PCA** — dimensionality reduction, and the moment the SVD from Phase 1 pays off
@@ -402,7 +401,7 @@ a toy.
 
 ### Step 6.5 — scikit-learn, done properly
 
-`~35 hrs` · `git switch -c step/6.5-scikit-learn-done-properly`
+`git switch -c step/6.5-scikit-learn-done-properly`
 
 - [ ] **The estimator API** — fit/predict/transform, and why everything follows one shape
 - [ ] **Pipelines and ColumnTransformer** — the structure that makes leakage hard
@@ -420,7 +419,7 @@ a toy.
 
 ### Step 6.6 — 🔨 Project: A predictive model you can defend
 
-`~35 hrs` · `git switch -c step/6.6-project-a-predictive-model-you-can-defend`
+`git switch -c step/6.6-project-a-predictive-model-you-can-defend`
 
 One real problem, taken end to end: a stated baseline, a leakage-free pipeline,
 honest validation, tuned but not tortured hyperparameters, and a writeup that
@@ -431,14 +430,14 @@ states plainly where the model fails and who it might fail for.
 ---
 
 ## Phase 7 — Deep learning
-`Weeks 38–47` · `~150 hrs`
+`Weeks 38–47`
 
 > Build a neural network out of the autodiff engine you wrote in Phase 5 — then
 > rebuild it in PyTorch and understand exactly what the framework took over.
 
 ### Step 7.1 — From scratch first
 
-`~25 hrs` · `git switch -c step/7.1-from-scratch-first`
+`git switch -c step/7.1-from-scratch-first`
 
 - [ ] **The neuron and the layer** — a weighted sum and a non-linearity, nothing more
 - [ ] **The forward pass as matrix multiplication** — Phase 1 paying off again
@@ -450,7 +449,7 @@ states plainly where the model fails and who it might fail for.
 
 ### Step 7.2 — The PyTorch training loop
 
-`~25 hrs` · `git switch -c step/7.2-the-pytorch-training-loop`
+`git switch -c step/7.2-the-pytorch-training-loop`
 
 - [ ] **Tensors and autograd** — the same ideas as Step 7.1, with devices and speed
 - [ ] **nn.Module** — and writing the training loop by hand before ever using a wrapper
@@ -460,7 +459,7 @@ states plainly where the model fails and who it might fail for.
 
 ### Step 7.3 — Making training converge
 
-`~18 hrs` · `git switch -c step/7.3-making-training-converge`
+`git switch -c step/7.3-making-training-converge`
 
 - [ ] **Regularisation** — dropout, weight decay, early stopping, augmentation
 - [ ] **Normalisation** — batch norm and layer norm, and where each belongs
@@ -469,14 +468,14 @@ states plainly where the model fails and who it might fail for.
 
 ### Step 7.4 — Convolutional networks
 
-`~25 hrs` · `git switch -c step/7.4-convolutional-networks`
+`git switch -c step/7.4-convolutional-networks`
 
 - [ ] **CNNs** — convolution, pooling, receptive fields, and the classic architectures
 - [ ] **Transfer learning** — fine-tuning a pretrained model, and when to freeze what
 
 ### Step 7.5 — Sequences and transformers
 
-`~32 hrs` · `git switch -c step/7.5-sequences-and-transformers`
+`git switch -c step/7.5-sequences-and-transformers`
 
 - [ ] **Sequence models** — RNN and LSTM briefly, and the limitation that motivated attention
 - [ ] **Transformers** — self-attention, multi-head attention, positional encoding; build a small one
@@ -484,7 +483,7 @@ states plainly where the model fails and who it might fail for.
 
 ### Step 7.6 — 🔨 Project: Two models and an honest comparison
 
-`~25 hrs` · `git switch -c step/7.6-project-two-models-and-an-honest-comparison`
+`git switch -c step/7.6-project-two-models-and-an-honest-comparison`
 
 Train an image classifier from scratch, then fine-tune a pretrained model on the
 same task, and write up the accuracy, the compute cost and the engineering time
@@ -495,7 +494,7 @@ for each. Then train a small transformer on a text corpus you actually care abou
 ---
 
 ## Phase 8 — Building with foundation models
-`Weeks 48–53` · `~90 hrs`
+`Weeks 48–53`
 
 > Use large language models as components in a system — and evaluate them
 > properly, which is the part almost everyone skips and the part that makes the
@@ -503,7 +502,7 @@ for each. Then train a small transformer on a text corpus you actually care abou
 
 ### Step 8.1 — The building blocks
 
-`~25 hrs` · `git switch -c step/8.1-the-building-blocks`
+`git switch -c step/8.1-the-building-blocks`
 
 - [ ] **Tokenisation and context windows** — what the model actually receives
 - [ ] **The Claude API** — messages, system prompts, streaming, tool use
@@ -513,7 +512,7 @@ for each. Then train a small transformer on a text corpus you actually care abou
 
 ### Step 8.2 — Search and retrieval
 
-`~30 hrs` · `git switch -c step/8.2-search-and-retrieval`
+`git switch -c step/8.2-search-and-retrieval`
 
 *Lexical first, deliberately. Dense retrieval then arrives as the answer to a
 problem you have already felt, rather than as the default everyone reaches for.*
@@ -532,7 +531,7 @@ problem you have already felt, rather than as the default everyone reaches for.*
 
 ### Step 8.3 — Making it trustworthy
 
-`~18 hrs` · `git switch -c step/8.3-making-it-trustworthy`
+`git switch -c step/8.3-making-it-trustworthy`
 
 - [ ] **Building an eval set** — the discipline that turns prompting into engineering
 - [ ] **LLM-as-judge** — how to use it and the biases it brings
@@ -543,7 +542,7 @@ problem you have already felt, rather than as the default everyone reaches for.*
 
 ### Step 8.4 — 🔨 Project: A retrieval application with a real eval suite
 
-`~17 hrs` · `git switch -c step/8.4-project-a-retrieval-application-with-a-real-eval-suite`
+`git switch -c step/8.4-project-a-retrieval-application-with-a-real-eval-suite`
 
 Build RAG over a corpus you own and care about. Two requirements make it count:
 an evaluation set that catches regressions, and a measured comparison against
@@ -555,14 +554,14 @@ result worth reporting — and most such projects never find out.
 ---
 
 ## Phase 9 — Production
-`Weeks 54–58` · `~75 hrs`
+`Weeks 54–58`
 
 > Ship something other people can use and you can maintain. A model in a notebook
 > has produced no value yet — this phase closes that gap.
 
 ### Step 9.1 — Shipping it
 
-`~25 hrs` · `git switch -c step/9.1-shipping-it`
+`git switch -c step/9.1-shipping-it`
 
 - [ ] **Project structure** — config, seeds, and genuine reproducibility
 - [ ] **Experiment tracking** — MLflow or Weights & Biases, and what to log
@@ -574,7 +573,7 @@ result worth reporting — and most such projects never find out.
 
 ### Step 9.2 — Keeping it alive
 
-`~20 hrs` · `git switch -c step/9.2-keeping-it-alive`
+`git switch -c step/9.2-keeping-it-alive`
 
 - [ ] **Testing ML code** — data tests, model tests, behavioural tests
 - [ ] **Monitoring** — data drift, concept drift, and performance decay in the wild
@@ -585,7 +584,7 @@ result worth reporting — and most such projects never find out.
 
 ### Step 9.3 — 🔨 Capstone: One deployed product, end to end
 
-`~30 hrs` · `git switch -c step/9.3-capstone-one-deployed-product-end-to-end`
+`git switch -c step/9.3-capstone-one-deployed-product-end-to-end`
 
 Data pipeline, trained model, served API, monitoring, and a README a stranger
 could follow to run the whole thing. Pick a problem you'd use yourself; the ones
