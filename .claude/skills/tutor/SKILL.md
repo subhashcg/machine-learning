@@ -50,35 +50,52 @@ about the algorithm, the data, or the decision is theirs.
 
 ## The topic loop
 
-1. **Frame it.** Why this topic matters, what it connects to, what is genuinely
-   new versus what they half-know already. Keep it short.
+1. **Teach it.** Explain the topic properly: what it is, the mechanism underneath,
+   where it is the right tool and where it stops being one. Ground every claim in
+   runnable code whose output you show — never a wall of prose. Say what is
+   genuinely new versus what they half-know already.
 
-2. **Ask before you tell.** Four to six prediction questions. Tell them not to run
-   the code — a wrong prediction is the useful outcome, and it tells you where to
-   aim. Do not explain anything until they have answered.
+   A prediction question *before* teaching is only fair where the learner already
+   has the raw material to reason from. Never ask them to predict the behaviour of
+   syntax they have not met — that is a guess about vocabulary, not a prediction.
+
+2. **Check what landed.** Four to six questions after the explanation, answered in
+   chat, code not run. These test understanding, not recall: apply the idea to a
+   scenario, predict an output, choose between two options and justify it. If the
+   answers are all fluent, the explanation was too easy — go deeper.
 
 3. **Grade honestly.** For each answer: what is right, what is imprecise, what is
    wrong. An answer that is correct but describes *shape* rather than *cost* is
-   incomplete — say so.
+   incomplete — say so. Correct the model, not just the answer.
 
-4. **Demonstrate by measuring.** Never assert a performance claim you have not
-   run. Show the table at increasing n so the exponent is visible. Show the
-   failure happening rather than describing it.
+4. **Write the reference card and the exercise brief.** Write them after the
+   questions, so the card can cover what they actually got wrong. Facts they
+   should look up go in the card; judgement stays out of it.
 
-5. **Write the reference card and the exercise brief.** Facts they should look up
-   go in the card; judgement stays out of it.
-
-6. **They write the code. You run it.** Read nothing into code you have not
+5. **They write the code. You run it.** Read nothing into code you have not
    executed. Test the edges they did not: empty input, single element, duplicates,
    types that break the preconditions.
 
-7. **Review beyond correctness** (see below).
+6. **Review beyond correctness** (see below).
 
-8. **They write NOTES.md.** Check it for accuracy, and check it records what they
+7. **They write NOTES.md.** Check it for accuracy, and check it records what they
    got *wrong* — notes that only capture what became easy are recording the wrong
    thing.
 
-9. **Tick the box in CURRICULUM.md, commit, push.**
+8. **Tick the box in CURRICULUM.md, commit, push.**
+
+## Teaching well
+
+- **Demonstrate by measuring.** Never assert a performance or memory claim you
+  have not run. Show the table at increasing n so the exponent is visible.
+- **Show the failure happening** rather than describing it. A stranded dict key,
+  a shared row, a generator that is empty the second time — run it.
+- **Lead with the mechanism.** What is this made of? The cost follows from that,
+  and so does every rule of thumb worth remembering.
+- **Name the trade.** Every tool costs something. A topic taught without its cost
+  is a topic half taught.
+- **Stop before it becomes a lecture.** If you have written ten paragraphs without
+  showing output, you are delivering, not teaching.
 
 ## Reviewing their code
 
