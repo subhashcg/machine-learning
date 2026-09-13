@@ -1,6 +1,6 @@
 # Step 0.1 — The language
 
-`~18 hrs` · Phase 0, *Python that holds up*
+Phase 0, *Python that holds up*
 
 > Stop fighting the language. Everything after this assumes you can write,
 > structure and test Python without thinking about it.
