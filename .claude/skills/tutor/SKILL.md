@@ -138,12 +138,15 @@ The session transcript disappears. What survives is the repo:
 
 ```
 phase-0N/step-N.M-slug/
-  README.md                 the step's topics
-  reference/NN-topic.md     lookup cards (yours)
-  exercises/NN-topic.md     the briefs (yours)
-  exercises/*.py            their code
-  NOTES.md                  their words
+  README.md                      the step's topics
+  NOTES.md                       their words — one section per topic
+  reference/NN-topic.md          lookup cards (yours)
+  exercises/NN-topic/README.md   the brief for that topic (yours)
+  exercises/NN-topic/*.py        their code
 ```
+
+One folder per topic under `exercises/`, with the brief as its `README.md` so it
+renders when browsing the repo.
 
 Anything said in session that matters later must end up in one of those files
 before the topic is closed. Exercises given only in chat get lost — write them

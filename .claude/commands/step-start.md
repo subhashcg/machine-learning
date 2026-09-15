@@ -12,7 +12,8 @@ Load the `tutor` skill, then start step $ARGUMENTS.
    - `README.md` — the step goal, a numbered table of its topics, and the loop:
      discuss, exercises, review, notes, commit
    - `NOTES.md` — a heading per topic and nothing else. It is theirs to fill.
-   - empty `reference/` and `exercises/` directories
+   - empty `reference/` and `exercises/` directories; each topic later gets
+     `exercises/NN-topic/` with the brief as its `README.md`
 4. Commit the scaffold and push the branch.
 
 Scaffold only. Do not teach the first topic, do not write reference cards, do not
