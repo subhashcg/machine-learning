@@ -42,3 +42,13 @@ Then:
 git switch main
 git merge --no-ff step/0.1-the-language
 ```
+
+## Layout
+
+```
+README.md                          this file
+NOTES.md                           your own words, one section per topic
+reference/NN-topic.md              lookup cards: syntax, costs, gotchas
+exercises/NN-topic/README.md       the brief for that topic
+exercises/NN-topic/*.py            the code you wrote
+```

@@ -9,9 +9,8 @@ things that *didn't* go smoothly.
 - Dict is ordered key, value pairs and accessible using key. Access is fast using keys
 - Set is unordered keys as items. Access is fast, as is inclusion check. Deduplication is the side effect
 - Tuple is fixed size list and immutable which allows these to be used as keys. Access is fast using index and acts same as list.
-
-slicing list creates a shallow copy and items are still same references.
-inclusion test in list and tuple is O(n) while others is O(1)
+- Slicing list creates a shallow copy and items are still same references.
+- inclusion test in list and tuple is O(n) while others is O(1)
 
 ## 2. Comprehensions and generators
 
