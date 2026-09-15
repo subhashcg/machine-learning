@@ -7,7 +7,7 @@ Add a `print` for each so running the file shows it working.
 
 ---
 
-**1. `unique_preserving_order(items)`**
+**1. `unique_preserving_order(items)`**  ·  `01_unique_preserving_order.py`
 
 Remove duplicates, keep first-seen order.
 
@@ -20,7 +20,7 @@ Must stay O(n). `set(items)` alone loses the order; scanning a list for
 
 ---
 
-**2. `word_frequencies(text)`**
+**2. `word_frequencies(text)`**  ·  `02_word_frequencies.py`
 
 Count words in a string, case-insensitively. Return a plain `dict`.
 
@@ -33,7 +33,7 @@ Do it twice — once by hand, once with `Counter` — and keep both. Seeing what
 
 ---
 
-**3. `invert(mapping)`**
+**3. `invert(mapping)`**  ·  `03_invert.py`
 
 Swap keys and values. Assume values are unique and hashable.
 
@@ -43,7 +43,7 @@ Swap keys and values. Assume values are unique and hashable.
 
 ---
 
-**4. `group_by_length(words)`**
+**4. `group_by_length(words)`**  ·  `04_group_by_length.py`
 
 Group words by their length.
 
@@ -53,7 +53,7 @@ Group words by their length.
 
 ---
 
-**5. `only_in_first(a, b)`**
+**5. `only_in_first(a, b)`**  ·  `05_only_in_first.py`
 
 Items in list `a` not in list `b`. Order preserved, no duplicates.
 
@@ -66,7 +66,7 @@ deliberately rather than by luck.
 
 ---
 
-**6. `make_grid(rows, cols)`**
+**6. `make_grid(rows, cols)`**  ·  `06_make_grid.py`
 
 Return a `rows × cols` grid of zeros where `grid[0][0] = 9` changes *only* that
 cell.

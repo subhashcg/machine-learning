@@ -6,7 +6,7 @@ Add a `print` per function, and an `if __name__ == "__main__":` guard.
 
 ---
 
-**1. `squares_of_evens(numbers)`**
+**1. `squares_of_evens(numbers)`**  ·  `01_squares_of_evens.py`
 
 Squares of the even numbers, in order, as a list.
 
@@ -19,7 +19,7 @@ difference in what each one *says* is on the page.
 
 ---
 
-**2. `word_lengths(words)`**
+**2. `word_lengths(words)`**  ·  `02_word_lengths.py`
 
 A dict mapping each word to its length, lowercased, duplicates collapsed.
 
@@ -31,7 +31,7 @@ Dict comprehension, one line.
 
 ---
 
-**3. `flatten(nested)`**
+**3. `flatten(nested)`**  ·  `03_flatten.py`
 
 Flatten one level.
 
@@ -44,7 +44,7 @@ people write it backwards once.
 
 ---
 
-**4. `countdown(n)`**
+**4. `countdown(n)`**  ·  `04_countdown.py`
 
 A generator yielding `n, n-1, ... 1`. Then demonstrate, with prints, that:
 
@@ -66,7 +66,7 @@ Write a small file in the `__main__` block to test against. Use `with`.
 
 ---
 
-**6. `first_n(iterable, n)`**
+**6. `first_n(iterable, n)`**  ·  `05_read_lines.py`
 
 The first `n` items of any iterable, as a list. Must work on a generator, and
 must not consume more than `n` items.
@@ -83,7 +83,7 @@ produces, and show only `n` lines appear.
 
 ---
 
-**7. `exhaustion_demo()`**
+**7. `exhaustion_demo()`**  ·  `06_first_n.py`
 
 Show, with prints, the bug from the discussion: a generator summed twice gives
 the right answer and then `0`. Then show the same data as a list behaving
