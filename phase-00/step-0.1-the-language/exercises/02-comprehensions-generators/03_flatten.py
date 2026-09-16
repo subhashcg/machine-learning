@@ -10,9 +10,10 @@ people write it backwards once.
 
 
 def flatten(nested):
-    # TODO
-    pass
-
+    """Flatten one level
+    Items must be iterable
+    """
+    return [x for row in nested for x in row]
 
 if __name__ == "__main__":
     print(flatten([[1, 2], [3], [], [4, 5]]))

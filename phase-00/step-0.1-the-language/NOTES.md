@@ -13,6 +13,12 @@ things that *didn't* go smoothly.
 - inclusion test in list and tuple is O(n) while others is O(1)
 
 ## 2. Comprehensions and generators
+- Nested comprehension reads left to right as outer to inner and runs like that.
+- Comprehensions can have filter as if conditions at the end or have if else as transformer at start
+- Generators can be iterated once only. Once exhausted they can't be iterated.
+- Generators are lazy evaluated and one at a time which makes them highly useful for streaming and handling large amount of data
+- readlines reads the while file and beats the efficiency gain by file handle itself being an iterator
+- A for loop on generator takes an item from generator and then decides
 
 ## 3. Functions
 

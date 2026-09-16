@@ -12,14 +12,25 @@ The demonstration is the exercise. Make the output prove each claim.
 
 
 def countdown(n):
-    # TODO — print something at the top of the body, so you can see when it runs
-    pass
+    """Yields n, n-1...1 values"""
+    print("Countdown starting...")
+    for x in range(n):
+        print(f"  loop: about to yield {n - x}")
+        yield n - x
+    print("Countdown finished")
 
 
 if __name__ == "__main__":
-    # TODO: call it, and show that nothing has run yet
+    print("about to call countdown(3)")
+    count = countdown(3)
+    print("called it — nothing has run yet")
 
-    # TODO: pull values one at a time with next(), showing it resumes
+    for i in ("first", "second", "third"):
+        print(f"asking for the {i} value")
+        print(f"got {next(count)}")
 
-    # TODO: show StopIteration at the end
-    pass
+    print("asking for a fourth")
+    try:
+        print(next(count))
+    except StopIteration:
+        print("Stopped")

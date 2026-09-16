@@ -12,15 +12,24 @@ Prove it doesn't over-consume: pass a generator that prints each value it
 produces, and show only n lines appear.
 """
 
+import itertools
 
 def first_n(iterable, n):
-    # TODO — by hand
-    pass
-
+    """
+    Returns n items from a iterable object
+    """
+    n_items = []
+    iterable = iter(iterable)
+    Done = object()
+    for i in range(n):
+      next_item = next(iterable, Done)
+      if next_item is Done:
+          break
+      n_items.append(next_item)
+    return n_items
 
 def first_n_islice(iterable, n):
-    # TODO — one line, using itertools.islice
-    pass
+    return list(itertools.islice(iterable, 0, n))
 
 
 def noisy(limit):
