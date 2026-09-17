@@ -12,29 +12,57 @@ total = 0
 
 
 def broken(n):
-    # TODO — read `total` and assign to it, so Python makes it local
-    pass
+    total = total + n
+    return total
 
 
 def with_global(n):
-    # TODO
-    pass
+    global total
+    total = total + n
+    return total
 
 
 def with_nonlocal(n):
-    # TODO — an inner function that mutates an enclosing variable
-    pass
-
+    total = 0
+    def add():
+        nonlocal total
+        total = total + n
+        return total
+    return add
 
 def pure(total, n):
-    # TODO — no outer state at all
-    pass
+    total = total + n
+    return total
 
 
 if __name__ == "__main__":
-    # TODO: call broken(), catch UnboundLocalError, print it
+    try:
+        broken(1)
+    except UnboundLocalError as e:
+        print(f"broken(1): {e}")
 
-    # TODO: show the three working versions
+    # One call makes all three look equally fine. Three calls show the difference.
+    print("\nwith_global(2), three times:")
+    for _ in range(3):
+        print("   ->", with_global(2))
+    print(f"   module `total` is now {total} — the function changed the world around it")
 
-    # TODO: comment — which would you ship, and why
-    pass
+    print("\nwith_nonlocal(2)(), three times:")
+    for _ in range(3):
+        print("   ->", with_nonlocal(2)())
+    print("   always 2 — a new closure each call, so its state is never reused")
+    add = with_nonlocal(2)
+    print("   reusing ONE closure:", [add() for _ in range(3)], "— state exists, but contained")
+
+    print("\npure(2, 5), three times:")
+    for _ in range(3):
+        print("   ->", pure(2, 5))
+    print("   same input, same output, in any order, whatever ran before")
+
+    # I would ship `pure`, to avoid hidden side effects. Concretely that buys:
+    #   testable          — no setup, no teardown, no reset between tests
+    #   order-independent — calling it never changes what the next call does
+    #   concurrency-safe  — no shared mutable state to race on
+    #   readable          — the signature names everything it touches
+    # `nonlocal` is the honest middle ground when state must persist across calls
+    # and should stay encapsulated (a counter, a cache). `global` almost never is.

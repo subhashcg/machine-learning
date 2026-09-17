@@ -10,17 +10,24 @@ watching the function's own metadata grow is the part that sticks.
 
 
 def append_to(item, target=None):
-    # TODO
-    pass
-
+    """Appends item to the target list which is optional"""
+    if target is None:
+        target = []
+    target.append(item)
+    return target
 
 def append_to_broken(item, target=[]):
-    # TODO — the version that shares one list across calls
-    pass
-
+    """Appends item to the target list which is optional"""
+    target.append(item)
+    return target
 
 if __name__ == "__main__":
-    # TODO: three calls to each, labelled, so the difference is obvious
+    print("append_to: 1 ->", append_to(1))
+    print("append_to: 2 ->", append_to(2))
+    print("append_to: 3 ->", append_to(3))
 
-    # TODO: print append_to_broken.__defaults__
-    pass
+    print("append_to_broken: 1 ->", append_to_broken(1))
+    print("append_to_broken: 2 ->", append_to_broken(2))
+    print("append_to_broken: 3 ->", append_to_broken(3))
+
+    print(append_to_broken.__defaults__)

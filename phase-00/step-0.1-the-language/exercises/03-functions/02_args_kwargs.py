@@ -11,13 +11,27 @@ shape, different parameters filled.
 
 
 def describe(*args, **kwargs):
-    # TODO
-    pass
+    """Describe the passed positional and keyword arguments
+    """
+    return f"{len(args)} positional {args}, {len(kwargs)} keyword {kwargs}"
 
+def accept(param1, param2, param3="3rd Param"):
+    return describe(param1, param2, param3)
 
 if __name__ == "__main__":
     print(describe(1, 2, x=3))
 
-    # TODO: build a list and a dict, call describe by unpacking them
+    args = [1, 2]
+    kwargs = {'x': 3}
+    print(describe(*args, **kwargs))
 
-    # TODO: show the one-item-short case
+    var_args = [1, 2, 3]
+    print(accept(*var_args))
+    var_args.pop()
+    print(accept(*var_args))
+    var_args.pop()
+    try:
+      print(accept(*var_args))
+    except TypeError:
+        print("Arg missing")
+

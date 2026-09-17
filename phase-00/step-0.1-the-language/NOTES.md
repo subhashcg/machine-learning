@@ -21,6 +21,17 @@ things that *didn't* go smoothly.
 - A for loop on generator takes an item from generator and then decides
 
 ## 3. Functions
+- Default values in functions are created once when def statements runs. If it a object then same reference will be used for every invovaction.
+- Unpacking a list as function arguments with default args can lead to unintended consequences if the size is not same as number of args expected.
+- Using keyword arguments gives the flexibility to change signature without impacting all consumers
+- Closuer captures the variable, not the value
+- A default argument (`lambda i=i:`) captures the *value* instead, because defaults bind at definition time. Same mechanism as the mutable-default trap, working in the opposite direction.
+- Use `is None`, never `== None`. `==` calls `__eq__`, which anything can override — `numpy_array == None` returns an array, and `if` on it raises ValueError. Identity can't be overridden.
+- Assignment anywhere in a function makes the name local for the *whole* function, decided when Python compiles it. That's why UnboundLocalError can fire on a line *above* the assignment.
+- `nonlocal` is only needed to assign to an enclosing variable. Reading needs nothing: lookup walks the LEGB chain automatically, and only binding forces the local-or-not decision.
+- A wrapper's own options must sit after `*args`, so they're keyword-only. `times` before `*args` eats the caller's first argument — and the error surfaces inside the wrapped function, not the wrapper, which is what makes it hard to find.
+- When you turn a value into a parameter, *every* use of it has to move. A hardcoded constant next to a parameter of the same value is invisible until someone changes the parameter, which they will, because it's a parameter.
+- `Exception` is not the top of the tree; `BaseException` is. `KeyboardInterrupt`, `SystemExit` and `GeneratorExit` sit outside `Exception` on purpose, so `except Exception` doesn't swallow Ctrl+C. Never write a bare `except:`.
 
 ## 4. Classes
 

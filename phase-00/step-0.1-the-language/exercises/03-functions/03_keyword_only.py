@@ -9,12 +9,16 @@ refusing that call is a feature.
 
 
 def resize(image, width, height, *, keep_ratio=True, upscale=False):
-    # TODO — return a string describing what would happen
-    pass
+    return f"{image} {width}*{height} (keep_ratio: {keep_ratio}, upscale: {upscale})"
 
 
 if __name__ == "__main__":
     print(resize("photo.jpg", 800, 600))
     print(resize("photo.jpg", 800, 600, keep_ratio=False, upscale=True))
 
-    # TODO: show the positional call being refused, and why that is a feature
+    try:
+        # This will raise as keep_ration and upscale are expected to keyword argments. Sicne these are booleans its better to be explicit about their purpose.
+        # Keyword arguments also gives the flexibility to change the functiona signature without impacting all consumers the function
+        print(resize("photo.jpg", 800, 600, True, False))
+    except TypeError as e:
+        print(f"Keyword arguments are being passed as positional argments {e}")

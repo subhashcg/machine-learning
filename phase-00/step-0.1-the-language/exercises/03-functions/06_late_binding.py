@@ -9,16 +9,19 @@ the closure captured.
 
 
 def make_multipliers_broken(n):
-    # TODO — the plain comprehension
-    pass
-
+    return [lambda x: x * i for i in range(n) ]
 
 def make_multipliers(n):
-    # TODO — the fixed version
-    pass
+    return [lambda x, i=i: x * i for i in range(n) ]
 
 
 if __name__ == "__main__":
-    # TODO: call every function from each version on the same input,
-    #       labelled so the difference is obvious
-    pass
+    # Closure captures the variable instead of value so all functions in broken version had the final version of i
+    broken = make_multipliers_broken(3)
+    argument = 2
+    for index, fn in enumerate(broken):
+        print(f"Broken function {index} with argument {argument}: {fn(argument)}")
+
+    correct = make_multipliers(3)
+    for index, fn in enumerate(correct):
+        print(f"Correct function {index} with argument {argument}: {fn(argument)}")

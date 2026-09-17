@@ -10,14 +10,26 @@ the error appears to come from.
 
 
 def retry(fn, *args, times=3, **kwargs):
-    # TODO
-    pass
+    for trial in range(times):
+        try:
+            return fn(*args, **kwargs)
+        except Exception as e:
+            if trial < times - 1:
+                print(f"Failed with error: {e}. {trial+1} try.")
+            else:
+                raise
+
 
 
 def retry_bad(fn, times=3, *args, **kwargs):
-    # TODO — same idea, but `times` in the wrong position
-    pass
-
+    for trial in range(times):
+        try:
+            return fn(*args, **kwargs)
+        except Exception as e:
+            if trial < times - 1:
+                print(f"Failed with error: {e}. {trial+1} try.")
+            else:
+                raise
 
 def flaky(label):
     """Fails the first two times it is called, then succeeds."""
@@ -32,9 +44,10 @@ def work(a, b):
 
 
 if __name__ == "__main__":
-    # TODO: retry(flaky, "job")
+    print(retry(flaky, "job"))
+    print(retry(work, 1, 2))
 
-    # TODO: retry(work, 1, 2) — arguments forwarded
-
-    # TODO: retry_bad(work, 1, 2) — catch the error and show where it came from
-    pass
+    try:
+        print(retry_bad(work, 1, 2))
+    except Exception as e:
+        print(e)
