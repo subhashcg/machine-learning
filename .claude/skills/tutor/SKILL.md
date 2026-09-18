@@ -72,6 +72,12 @@ about the algorithm, the data, or the decision is theirs.
    questions, so the card can cover what they actually got wrong. Facts they
    should look up go in the card; judgement stays out of it.
 
+   **At most five exercises per topic**, and fewer when five is padding. Go over
+   only when a topic genuinely cannot be covered in five, and say why. A sixth
+   exercise usually drills something the first five already covered — it costs
+   the learner an hour and teaches them less than the hour is worth. Prefer one
+   exercise that combines two ideas over two that each isolate one.
+
 5. **They write the code. You run it.** Read nothing into code you have not
    executed. Test the edges they did not: empty input, single element, duplicates,
    types that break the preconditions.

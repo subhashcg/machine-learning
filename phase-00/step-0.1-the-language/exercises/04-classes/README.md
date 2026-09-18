@@ -41,17 +41,7 @@ Make `__add__` refuse to add different currencies.
 
 ---
 
-**4. `RectStored` and `RectComputed`**  ·  `04_property_staleness.py`
-
-`RectStored` computes `self.area` in `__init__`. `RectComputed` makes `area` a
-`@property`.
-
-Change `w` on both and print all three values for each. One of them will be
-lying. Also show what happens when you try to assign to the computed `area`.
-
----
-
-**5. `Temperature`**  ·  `05_property_validation.py`
+**4. `Temperature`**  ·  `04_properties.py`
 
 Stores celsius. Give it:
 
@@ -63,9 +53,15 @@ Stores celsius. Give it:
 Show that setting `kelvin` changes `celsius` and `fahrenheit` consistently, and
 that an invalid temperature is refused from either direction.
 
+Then write `TempStored`, which computes `self.fahrenheit` once in `__init__`.
+Change its celsius and print both values — one will be lying.
+
+Finish with a comment: for each of celsius, fahrenheit and kelvin, say whether it
+should be a plain attribute, a property, or a method, and why.
+
 ---
 
-**6. `Point` and `Config`**  ·  `06_dataclasses.py`
+**5. `Point` and `Config`**  ·  `05_dataclasses.py`
 
 `Point(x, y)` as a `@dataclass`. Show the generated `__repr__` and `__eq__`.
 
@@ -74,17 +70,3 @@ that an invalid temperature is refused from either direction.
 
 Then, inside a `try`, define a dataclass with `tags: list = []` and print the
 error. In a comment, say what test the dataclass is actually applying.
-
----
-
-**7. `Grade`**  ·  `07_design.py`
-
-A student's grade: a `score` (0–100), a read-only `letter` derived from it, and a
-`passed` boolean also derived.
-
-Decide for each of the three whether it should be a plain attribute, a
-`@property`, or a method — and write a comment justifying each choice. Then
-implement it.
-
-Make `score` reject values outside 0–100. Show that changing `score` updates
-`letter` and `passed` with no extra work.
