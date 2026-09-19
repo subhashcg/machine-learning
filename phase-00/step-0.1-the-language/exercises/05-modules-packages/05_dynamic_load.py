@@ -16,8 +16,16 @@ TOPIC2 = pathlib.Path(__file__).parents[1] / "02-comprehensions-generators"
 
 
 def load(path, name="ex"):
-    # TODO
-    raise NotImplementedError
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None:
+        raise ImportError(f"cannot load {path}")
+    module = importlib.util.module_from_spec(spec)   # empty module, __name__ = name
+    spec.loader.exec_module(module)                  # run the file's code inside it
+    return module
+
+
+if __name__ == "__main__":
+    print(load(TOPIC2 / "03_flatten.py").flatten([[1, 2], [3], [], [4, 5]]))
 
 
 # ---------------------------------------------------------------- checks
