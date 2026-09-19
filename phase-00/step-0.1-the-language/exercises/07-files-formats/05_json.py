@@ -16,23 +16,31 @@ from pathlib import Path
 
 
 def save_json(path, obj):
-    # TODO
-    raise NotImplementedError
+    # ensure_ascii=False keeps "café" as itself instead of "café"
+    text = json.dumps(obj, indent=2, ensure_ascii=False)
+    path.write_text(text, encoding="utf-8")
 
 
 def load_json(path):
-    # TODO
-    raise NotImplementedError
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def survives(obj):
-    # TODO
-    raise NotImplementedError
+    try:
+        return json.loads(json.dumps(obj)) == obj
+    except TypeError:                   # not serialisable at all
+        return False
+
+
+def _iso(value):
+    """default= is called only for values json cannot handle itself."""
+    if isinstance(value, (datetime.date, datetime.datetime)):
+        return value.isoformat()
+    raise TypeError(f"{type(value).__name__} is not JSON serialisable")
 
 
 def encode_dates(obj):
-    # TODO — return the JSON string; dates as ISO ("2026-01-01")
-    raise NotImplementedError
+    return json.dumps(obj, default=_iso)
 
 
 # ---------------------------------------------------------------- checks

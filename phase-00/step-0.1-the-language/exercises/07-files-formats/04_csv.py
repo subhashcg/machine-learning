@@ -14,23 +14,28 @@ from pathlib import Path
 
 
 def naive_parse(line):
-    # TODO
-    raise NotImplementedError
+    return line.split(",")      # splits inside quoted fields too
 
 
 def read_rows(path):
-    # TODO
-    raise NotImplementedError
+    # newline="" lets the csv module handle line endings, including ones inside fields
+    with open(path, newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
 
 
 def read_typed(path):
-    # TODO
-    raise NotImplementedError
+    rows = read_rows(path)
+    for row in rows:
+        row["qty"] = int(row["qty"])        # ValueError on junk, which is the point
+        row["price"] = float(row["price"])
+    return rows
 
 
 def write_rows(path, rows, fieldnames):
-    # TODO
-    raise NotImplementedError
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
 
 
 # ---------------------------------------------------------------- checks

@@ -13,23 +13,24 @@ from pathlib import Path
 
 
 def save(path, text):
-    # TODO
-    raise NotImplementedError
+    # always name the encoding: the default depends on the machine
+    path.write_text(text, encoding="utf-8")
 
 
 def load(path):
-    # TODO
-    raise NotImplementedError
+    return path.read_text(encoding="utf-8")
 
 
 def load_as(path, encoding):
-    # TODO
-    raise NotImplementedError
+    return path.read_text(encoding=encoding)
 
 
 def round_trips(path, text, encoding):
-    # TODO
-    raise NotImplementedError
+    save(path, text)
+    try:
+        return load_as(path, encoding) == text
+    except UnicodeDecodeError:          # ascii: loud failure
+        return False                    # latin-1: no error, just different text
 
 
 # ---------------------------------------------------------------- checks

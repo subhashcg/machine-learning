@@ -109,7 +109,7 @@ are the branch worth keeping tidy, since these are the ones other people read.
 - [x] **Classes** — `__init__`, dunder methods, `@property`, `@dataclass`, inheritance and when to compose instead
 - [x] **Modules and packages** — imports, `__main__`, how a project is laid out
 - [x] **Exceptions** — try/except/finally, custom exceptions, failing loudly and usefully
-- [ ] **Files and formats** — context managers, `pathlib`, csv, json
+- [x] **Files and formats** — context managers, `pathlib`, csv, json
 - [ ] **Type hints** — what they buy you and what they don't
 
 ### Step 0.2 — Working like an engineer

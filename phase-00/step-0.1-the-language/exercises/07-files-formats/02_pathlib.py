@@ -14,23 +14,26 @@ from pathlib import Path
 
 
 def describe(path):
-    # TODO
-    raise NotImplementedError
+    return {
+        "name": path.name,              # sales.csv
+        "stem": path.stem,              # sales
+        "suffix": path.suffix,          # .csv
+        "parent": str(path.parent),     # asked for as a string
+        "is_absolute": path.is_absolute(),
+    }
 
 
 def csv_files(directory):
-    # TODO
-    raise NotImplementedError
+    return sorted(p.name for p in directory.glob("*.csv"))
 
 
 def all_csv_files(directory):
-    # TODO
-    raise NotImplementedError
+    # as_posix() so the result is "sub/c.csv" on every platform
+    return sorted(p.relative_to(directory).as_posix() for p in directory.rglob("*.csv"))
 
 
 def swap_extension(path, new_suffix):
-    # TODO
-    raise NotImplementedError
+    return path.with_suffix(new_suffix)
 
 
 # ---------------------------------------------------------------- checks

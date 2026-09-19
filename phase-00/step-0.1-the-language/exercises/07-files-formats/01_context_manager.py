@@ -22,21 +22,33 @@ class Tracker:
     def __init__(self, log):
         self.log = log
 
-    # TODO: __enter__ appends "enter" and returns the log
-    # TODO: __exit__ appends "exit"; must NOT swallow
+    def __enter__(self):
+        self.log.append("enter")
+        return self.log                 # this is what `as` binds
+
+    def __exit__(self, exc_type, exc, tb):
+        self.log.append("exit")
+        return False                    # falsy: any exception carries on
 
 
 @contextmanager
 def tracker(log, label="t"):
-    # TODO — same behaviour; yield {"log": log, "label": label}
-    # the cleanup must run even when the body raises
-    raise NotImplementedError
+    log.append("enter")
+    try:
+        yield {"log": log, "label": label}   # the body runs here
+    finally:
+        log.append("exit")                   # runs on both paths
 
 
 @contextmanager
 def swallowing(log):
-    # TODO — catch Exception from the body, append "swallowed", do not re-raise
-    raise NotImplementedError
+    log.append("enter")
+    try:
+        yield log
+    except Exception:                   # the body's exception is thrown in AT the yield
+        log.append("swallowed")         # not re-raising it ends the `with` normally
+    finally:
+        log.append("exit")
 
 
 # ---------------------------------------------------------------- checks
