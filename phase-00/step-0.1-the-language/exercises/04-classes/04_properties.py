@@ -18,16 +18,50 @@ ABSOLUTE_ZERO_C = -273.15
 
 
 class Temperature:
-    # TODO
-    pass
+    def __init__(self, celsius):
+        self.celsius = celsius          # goes through the setter, so it's validated
+
+    @property
+    def celsius(self):
+        return self._celsius
+
+    @celsius.setter
+    def celsius(self, value):
+        if value < ABSOLUTE_ZERO_C:
+            raise ValueError(f"{value}C is below absolute zero ({ABSOLUTE_ZERO_C}C)")
+        self._celsius = value
+
+    @property
+    def fahrenheit(self):
+        return self.celsius * 9 / 5 + 32
+
+    @property
+    def kelvin(self):
+        return self.celsius - ABSOLUTE_ZERO_C
+
+    @kelvin.setter
+    def kelvin(self, value):
+        self.celsius = value + ABSOLUTE_ZERO_C   # reuse celsius's validation
 
 
 class TempStored:
-    # TODO — fahrenheit computed once in __init__, then left to rot
-    pass
+    def __init__(self, celsius):
+        self.celsius = celsius
+        self.fahrenheit = celsius * 9 / 5 + 32   # snapshot; never updated again
 
 
-# TODO: comment — attribute / property / method for each, and why
+# celsius     property. It's the one piece of stored state, so it would be a
+#             plain attribute — except it has an invariant (>= absolute zero).
+#             A property keeps the `t.celsius = x` syntax and adds the check.
+#             With no invariant, a plain attribute would be right.
+# fahrenheit  read-only property. It's derived from celsius, cheap, and has no
+#             arguments, so it reads like data. Storing it (TempStored) lets it
+#             drift out of sync; computing it on access can't.
+# kelvin      property with a setter. Also derived, but it's a natural thing to
+#             assign to, and the setter just translates to celsius (so the
+#             validation lives in one place). None of these should be methods:
+#             a method suits work that's expensive, takes arguments, or has
+#             side effects — `t.to_unit("F")` would be one; these aren't.
 
 
 # ---------------------------------------------------------------- checks

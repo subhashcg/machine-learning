@@ -15,20 +15,35 @@ Then a comment: what test is the dataclass actually applying?
 
 from dataclasses import dataclass, field
 
+@dataclass
+class Point:
+    x: float
+    y: float = 0.0
 
-# TODO: Point
-
-
-# TODO: Config
+@dataclass
+class Config:
+    names: list = field(default_factory=list)
+    lookup: dict = field(default_factory=dict)
+    limits: list = field(default_factory=lambda: [0, 100])
 
 
 def bad_dataclass_error():
     """Attempt a dataclass with `tags: list = []`; return the error message."""
-    # TODO
-    raise NotImplementedError
+    try:
+        @dataclass
+        class Bad:
+            tags: list = []
+    except ValueError as e:
+        return str(e)
 
 
-# TODO: comment — what test is it applying?
+# The test is "is the default's type unhashable?" — in 3.11+ it checks
+# `type(default).__hash__ is None` (older versions only checked for exactly
+# list, dict or set). Unhashable is used as a stand-in for "mutable": list,
+# dict, set and any class that defines __eq__ without __hash__ get rejected.
+# It's a heuristic, not a real mutability check — a mutable object whose class
+# is still hashable (a plain custom class instance, say) slips through and is
+# shared across every instance, just like the classic `def f(x=[])` bug.
 
 
 # ---------------------------------------------------------------- checks
