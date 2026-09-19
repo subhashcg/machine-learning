@@ -228,3 +228,116 @@ P("not an int")  ->  P(x='not an int')
 
 They are metadata. The dataclass reads them to find fields; nothing checks types
 at runtime. That is `mypy`'s job — Topic 8.
+
+
+---
+
+## Inheritance
+
+```python
+class Animal:
+    def speak(self): return "..."
+    def describe(self): return f"{self.name} says {self.speak()}"
+
+class Dog(Animal):
+    def speak(self): return "woof"
+```
+
+`describe()` is written once and calls whichever `speak()` the object actually
+has. The caller never branches on type.
+
+### `super()`
+
+```python
+class Cat(Animal):
+    def __init__(self, name, indoor=True):
+        super().__init__(name)        # or the parent's setup never runs
+        self.indoor = indoor
+```
+
+Override `__init__` and you must call `super().__init__(...)` unless you mean to
+replace construction entirely. Forgetting it gives `AttributeError` later, far
+from the cause.
+
+**`super()` is not "my parent"** — it is "the next class in this object's MRO":
+
+```python
+class B(A): def who(self): return "B -> " + super().who()
+class C(A): def who(self): return "C -> " + super().who()
+class D(B, C): pass
+
+D.__mro__   ->  ['D', 'B', 'C', 'A', 'object']
+D().who()   ->  'B -> C -> A'          B's super() reached C, not A
+```
+
+### isinstance follows the chain; type() does not
+
+```
+isinstance(d, Dog)     -> True
+isinstance(d, Animal)  -> True     <- the basis of `except AppError`
+type(d) is Animal      -> False
+```
+
+`except SomeError` is an isinstance check. Prefer `isinstance` over
+`type(x) is Y`, which rejects subclasses and defeats the point.
+
+### Composition over inheritance
+
+**Inheritance is IS-A; composition is HAS-A.**
+
+```python
+class CarInherits(Engine): ...          # a Car IS an Engine? no
+class CarComposes:
+    def __init__(self): self.engine = Engine()
+```
+
+Inheriting drags in every parent method forever and fixes you to one. Two
+engines, or a swappable engine, is impossible by inheritance and trivial by
+composition.
+
+### The substitutability test
+
+A subclass must be usable anywhere the parent is:
+
+```python
+def stretch(rect):          # written against Rectangle
+    rect.w = 10
+    return rect.area()
+
+stretch(Square(2))  ->  20      the square is now 10x2
+```
+
+A mutable `Rectangle` promises width and height move independently; `Square`
+cannot keep that promise. Mathematically IS-A, programmatically not.
+**Inheriting means promising to honour every contract the parent's callers rely
+on.** When in doubt, compose.
+
+### Abstract base classes
+
+```python
+from abc import ABC, abstractmethod
+
+class Storage(ABC):
+    @abstractmethod
+    def save(self, key, value): ...
+    def save_many(self, items):              # concrete, shared
+        for k, v in items.items(): self.save(k, v)
+```
+
+```
+Storage()     -> TypeError: Can't instantiate abstract class Storage with abstract method save
+Incomplete()  -> TypeError: ... with abstract method save
+```
+
+The error arrives at **instantiation**, not at first call, so a half-finished
+implementation fails immediately. An ABC can mix required methods with shared
+concrete ones — which is how scikit-learn's estimator API is built.
+
+### Exceptions are just classes
+
+```
+ConfigError.__mro__ -> ['ConfigError', 'AppError', 'Exception', 'BaseException', 'object']
+```
+
+Nothing special about them. `except AppError` catches `ConfigError` for the same
+reason `isinstance(dog, Animal)` is True.
