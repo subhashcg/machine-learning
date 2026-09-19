@@ -13,13 +13,18 @@ should raise, not become None.
 
 
 def wide(data, uid):
-    # TODO — the antipattern, so the contrast is on the page
-    raise NotImplementedError
+    try:
+        return data["users"][uid]
+    except Exception:           # also catches the caller's bugs, and any typo in here
+        return None
 
 
 def narrow(data, uid):
-    # TODO
-    raise NotImplementedError
+    users = data["users"]       # outside the try: a missing "users" key is a caller bug
+    try:
+        return users[uid]       # a list here raises TypeError, which propagates
+    except KeyError:            # the one case we can act on: no such user
+        return None
 
 
 # ---------------------------------------------------------------- checks

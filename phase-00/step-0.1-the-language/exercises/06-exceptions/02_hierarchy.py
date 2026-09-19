@@ -11,23 +11,27 @@ ordering the checks correctly.
 
 
 class AppError(Exception):
-    # TODO
-    pass
+    """Base for everything this app raises. Catch this to catch only our errors."""
 
 
 class ConfigError(AppError):
-    # TODO
-    pass
+    def __init__(self, key, message="missing"):
+        super().__init__(f"config {key!r}: {message}")   # becomes str(e) and e.args
+        self.key = key
 
 
 class RetryableError(AppError):
-    # TODO
-    pass
+    def __init__(self, message, attempts):
+        super().__init__(message)
+        self.attempts = attempts
 
 
 def classify(exc):
-    # TODO — most specific first
-    raise NotImplementedError
+    if isinstance(exc, RetryableError):   # subclass first, or AppError would claim it
+        return "retryable"
+    if isinstance(exc, AppError):
+        return "app"
+    return "other"
 
 
 # ---------------------------------------------------------------- checks

@@ -15,18 +15,24 @@ class ConfigError(Exception):
 
 
 def wrapped(raw):
-    # TODO
-    raise NotImplementedError
+    try:
+        return int(raw)
+    except ValueError as e:
+        raise ConfigError(f"port must be an int, got {raw!r}") from e
 
 
 def implicit(raw):
-    # TODO
-    raise NotImplementedError
+    try:
+        return int(raw)
+    except ValueError:
+        raise ConfigError(f"port must be an int, got {raw!r}")
 
 
 def hidden(raw):
-    # TODO
-    raise NotImplementedError
+    try:
+        return int(raw)
+    except ValueError:
+        raise ConfigError(f"port must be an int, got {raw!r}") from None
 
 
 # ---------------------------------------------------------------- checks

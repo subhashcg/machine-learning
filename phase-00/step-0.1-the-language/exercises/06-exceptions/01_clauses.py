@@ -11,13 +11,22 @@ try and returns "swallowed" from finally. Leave it broken — that is the point.
 
 
 def parse_and_double(raw, log):
-    # TODO
-    raise NotImplementedError
+    try:
+        n = int(raw)            # the only line the handler is meant for
+    except ValueError:
+        log.append("bad")
+        return None
+    else:
+        return n * 2            # errors here propagate; the handler above can't see them
+    finally:
+        log.append("done")      # runs after either return, before the caller gets the value
 
 
 def boom(log):
-    # TODO — raise ValueError("lost") in try, return "swallowed" from finally
-    raise NotImplementedError
+    try:
+        raise ValueError("lost")
+    finally:
+        return "swallowed"      # discards the in-flight ValueError — never do this
 
 
 # ---------------------------------------------------------------- checks

@@ -20,8 +20,19 @@ class RetryError(Exception):
 
 
 def retry(fn, *args, times=3, retry_on=Exception, **kwargs):
-    # TODO
-    raise NotImplementedError
+    if times < 1:
+        raise ValueError(f"times must be at least 1, got {times}")
+    retry.log = []
+    for _ in range(times):
+        try:
+            return fn(*args, **kwargs)
+        except retry_on as e:   # anything else (incl. KeyboardInterrupt) propagates
+            retry.log.append(str(e))
+            last = e            # `e` is deleted when the except block ends
+    raise RetryError(f"{fn.__name__} failed {times} times: {last}") from last
+
+
+retry.log = []
 
 
 # ---------------------------------------------------------------- checks
