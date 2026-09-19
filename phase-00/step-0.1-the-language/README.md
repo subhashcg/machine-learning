@@ -20,11 +20,15 @@ Phase 0, *Python that holds up*
 
 ## How we work a topic
 
-1. We discuss the topic in the session — I ask what you expect to be true
-   before I explain anything.
-2. You get exercises. You write the file yourself, from scratch.
-3. I run your code and review it — for idiom and cost, not just correctness.
-4. You commit.
+1. I teach the topic, grounded in code you can see run.
+2. Questions, to check what landed.
+3. A reference card and an exercise brief, written after the questions so they
+   cover what actually needed covering.
+4. You implement. Each exercise file ends with checks written for you — run the
+   file and it tells you where you stand.
+5. I review what the checks can't see: naming, docstrings, whether it's
+   idiomatic rather than merely correct.
+6. You commit.
 
 The session transcript disappears; `reference/NN-topic.md` does not. It is the
 durable record of what was discussed.
