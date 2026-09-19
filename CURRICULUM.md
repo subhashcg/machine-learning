@@ -103,9 +103,9 @@ are the branch worth keeping tidy, since these are the ones other people read.
 
 `git switch -c step/0.1-the-language`
 
-- [ ] **Data structures** — list, dict, set, tuple: what each costs and when to reach for it
-- [ ] **Comprehensions and generators** — `yield`, iterators, and why lazy evaluation matters on big data
-- [ ] **Functions** — `*args`/`**kwargs`, closures, scope, and the mutable-default trap
+- [x] **Data structures** — list, dict, set, tuple: what each costs and when to reach for it
+- [x] **Comprehensions and generators** — `yield`, iterators, and why lazy evaluation matters on big data
+- [x] **Functions** — `*args`/`**kwargs`, closures, scope, and the mutable-default trap
 - [ ] **Classes** — `__init__`, dunder methods, `@property`, and `@dataclass`
 - [ ] **Modules and packages** — imports, `__main__`, how a project is laid out
 - [ ] **Exceptions** — try/except/finally, custom exceptions, failing loudly and usefully
