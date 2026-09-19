@@ -24,15 +24,14 @@ Phase 0, *Python that holds up*
    before I explain anything.
 2. You get exercises. You write the file yourself, from scratch.
 3. I run your code and review it — for idiom and cost, not just correctness.
-4. You write up the topic in `NOTES.md`.
-5. You commit.
+4. You commit.
 
-The session transcript disappears; `NOTES.md` does not. It is the only durable
-record of what was discussed, so it is part of the work, not an afterthought.
+The session transcript disappears; `reference/NN-topic.md` does not. It is the
+durable record of what was discussed.
 
 ## Done when
 
-- Every topic has code you wrote and notes you wrote
+- Every topic has code you wrote, passing its checks
 - You can explain any item on the checklist without looking it up
 - The code runs from a clean checkout
 
@@ -47,8 +46,7 @@ git merge --no-ff step/0.1-the-language
 
 ```
 README.md                          this file
-NOTES.md                           your own words, one section per topic
 reference/NN-topic.md              lookup cards: syntax, costs, gotchas
 exercises/NN-topic/README.md       the brief for that topic
-exercises/NN-topic/*.py            the code you wrote
+exercises/NN-topic/*.py            the code you wrote, checks at the bottom
 ```
