@@ -11,6 +11,11 @@ Each file ends with checks written for you — run it to see where you stand.
 `@contextmanager`. Both append `"enter"` and `"exit"` to a list so the checks can
 see the order, and neither may swallow the exception.
 
+Both must give `as` something useful — the class returns the log, the generator
+yields a dict. **`as` binds what `__enter__` returns** (or what the generator
+yields), not the context manager itself; a method with no `return` quietly hands
+you `None`.
+
 One check runs a body that raises. If your `@contextmanager` version lacks
 `try/finally` around the `yield`, the cleanup is skipped and it fails.
 

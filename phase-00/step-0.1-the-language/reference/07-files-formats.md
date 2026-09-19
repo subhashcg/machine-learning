@@ -15,6 +15,18 @@ class Thing:
 `__exit__` runs whether the body succeeded or raised, and receives the exception
 so it can inspect it.
 
+**`as` binds what `__enter__` returns**, not the context manager:
+
+```
+def __enter__(self): return 42      ->  with X() as v:   v = 42
+def __enter__(self): return self    ->  v is the manager  (what file objects do)
+def __enter__(self): pass           ->  v = None          easy bug
+```
+
+With `@contextmanager`, `as` binds whatever you **yield**; a bare `yield` gives
+`None`. And `as` is optional — a manager used only for its side effect needs
+none.
+
 **Returning `True` swallows the exception** — `except Exception: pass` hidden
 inside a class, invisible at the call site, and it covers the whole block. The
 only good use is when suppression is the declared purpose and is narrow:
