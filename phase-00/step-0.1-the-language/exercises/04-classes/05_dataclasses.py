@@ -1,12 +1,16 @@
-"""6. Point and Config
+"""5. Point and Config
 
-Point(x, y) as a @dataclass. Show the generated __repr__ and __eq__.
+Point(x, y) as a @dataclass, y defaulting to 0.0.
 
-Config with a list, a dict and a non-empty list default — all three via
-field(default_factory=...). Prove two instances don't share.
+Config as a @dataclass with three fields, all via field(default_factory=...):
+    names   an empty list
+    lookup  an empty dict
+    limits  a list defaulting to [0, 100]
 
-Then, inside a try, define a dataclass with `tags: list = []` and print the
-error. In a comment, say what test the dataclass is actually applying.
+bad_dataclass_error() should attempt to define a dataclass with a mutable
+default (`tags: list = []`) inside a try, and return the ValueError's message.
+
+Then a comment: what test is the dataclass actually applying?
 """
 
 from dataclasses import dataclass, field
@@ -18,12 +22,60 @@ from dataclasses import dataclass, field
 # TODO: Config
 
 
+def bad_dataclass_error():
+    """Attempt a dataclass with `tags: list = []`; return the error message."""
+    # TODO
+    raise NotImplementedError
+
+
+# TODO: comment — what test is it applying?
+
+
+# ---------------------------------------------------------------- checks
+# Written for you. Implement above; run the file to see where you stand.
+
+def _run(checks):
+    ok = 0
+    for label, fn in checks:
+        try:
+            fn()
+        except NotImplementedError:
+            print(f"  ·     {label}"); continue
+        except AssertionError as e:
+            print(f"  FAIL  {label}" + (f"  — {e}" if str(e) else "")); continue
+        except Exception as e:
+            print(f"  ERR   {label}  — {type(e).__name__}: {e}"); continue
+        print(f"  ok    {label}"); ok += 1
+    print(f"{ok}/{len(checks)} passing")
+
+
+
+def _generated_methods():
+    p = Point(1, 2)
+    assert repr(p) == "Point(x=1, y=2)", f"repr was {repr(p)!r}"
+    assert Point(1, 2) == Point(1, 2), "__eq__ should compare by value"
+    assert Point(1) == Point(1, 0.0), "y should default to 0.0"
+
+
+def _defaults_are_per_instance():
+    a, b = Config(), Config()
+    assert a.names == [] and a.lookup == {} and a.limits == [0, 100], f"{a}"
+    a.names.append("x"); a.lookup["k"] = 1; a.limits.append(200)
+    assert b.names == [], "the second Config should be untouched"
+    assert b.lookup == {}, "the second Config should be untouched"
+    assert b.limits == [0, 100], "the second Config should be untouched"
+    assert a.names is not b.names, "each instance needs its own list"
+
+
+def _mutable_default_is_rejected():
+    msg = bad_dataclass_error()
+    assert msg is not None, "defining it should have raised — return the message"
+    assert "default_factory" in msg, f"unexpected message: {msg!r}"
+
+
 if __name__ == "__main__":
-    # TODO: repr and eq for free
-
-    # TODO: two Configs, prove no sharing
-
-    # TODO: try/except around a dataclass with a mutable default
-
-    # TODO: comment — what test is it applying?
-    pass
+    _run([
+        ("@dataclass generates __init__/__repr__/__eq__", _generated_methods),
+        ("default_factory gives each instance its own",   _defaults_are_per_instance),
+        ("a mutable default is a hard error",             _mutable_default_is_rejected),
+    ])

@@ -32,10 +32,23 @@ show them. Say what is wrong and let them fix it.
 ### What you write
 
 - `reference/NN-topic.md` — lookup cards: syntax, complexity, gotchas, decision rules
-- `exercises/NN-topic.md` — the briefs
-- Empty exercise files: module docstring, and on request the function signature
-  plus a `__main__` block. **Never the body.**
+- `exercises/NN-topic/README.md` — the briefs
+- Exercise files: module docstring, function signatures, and **the checks**.
+  **Never the body.**
 - The step `README.md`
+
+**Write the checks, not just the stubs.** Each exercise file ends with a marked
+block you wrote: assertions encoding what the exercise claims, and a small runner
+that reports one line per check rather than dying on the first failure. The
+learner implements the bodies and runs the file; the output tells them where they
+stand without waiting for you.
+
+Assertions are also how a demonstration exercise gets stated precisely. "Show that
+two baskets share a list" becomes `assert x.items is y.items`; "show the stored
+value goes stale" becomes an assertion that it differs from the recomputed one.
+That is sharper than asking for prints, and it models what proof looks like.
+
+Writing the harness is not the exercise — the implementation is.
 
 ### What they write
 

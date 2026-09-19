@@ -1,7 +1,18 @@
 # Exercises — Topic 4, classes
 
 Write these in `exercises/04-classes/`. Standard library only.
-A `print` per function, and an `if __name__ == "__main__":` guard.
+
+Each file ends with a **checks** block that is written for you. Implement the
+classes above it and run the file — one line per check tells you where you
+stand. Don't edit the checks; if one looks wrong, say so.
+
+```
+  ok    __eq__ compares value, not identity
+  FAIL  __hash__ agrees with __eq__  — equal objects must hash the same
+  ·     __lt__ makes sorted() work
+```
+
+`·` means not written yet.
 
 ---
 

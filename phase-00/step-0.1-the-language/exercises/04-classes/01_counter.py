@@ -24,14 +24,31 @@ def make_counter():
 
 
 class Counter:
-    # TODO
-    pass
 
+    def __init__(self):
+        self.count = 0
+
+    def increment(self):
+        self.count += 1
+
+    def read(self):
+        return self.count
+
+    def reset(self):
+        self.count = 0
 
 if __name__ == "__main__":
-    # TODO: run the same sequence through both, side by side
+    inc, read = make_counter()
+    print(f"Closure counter {read()}")
+    inc()
+    print(f"Closure counter {read()}")
 
-    # TODO: show reset()
+    counter = Counter()
+    print(f"Class counter {counter.read()}")
+    counter.increment()
+    print(f"Class counter {counter.read()}")
 
-    # TODO: comment — what the class gained, what it lost
-    pass
+    counter.reset()
+    print(f"Class counter after reset {counter.read()}")
+
+    # Class can add more methods without changing the existing functionality. Closure encapsulates data better.
