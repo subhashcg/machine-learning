@@ -9,9 +9,7 @@ Load the `tutor` skill, then close step $ARGUMENTS.
    list what remains and stop — a step is not finished early.
 2. Run every file in `exercises/`. All must pass. Re-measure anything the briefs
    gave a complexity requirement for.
-3. Check `NOTES.md` has a real entry per topic, in the learner's words, and that
-   it records what they got wrong rather than only what became easy.
-4. Confirm the step directory holds a reference card per topic.
+3. Confirm the step directory holds a reference card per topic.
 5. Rebase the branch on `main`, push, and open the pull request. Body: what the
    step covered, one line per topic on what it exercised, and anything left
    deliberately undone.

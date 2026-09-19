@@ -14,9 +14,42 @@ BadMoney has __eq__ but no __hash__ — leave it that way, the checks rely on it
 
 
 class Money:
-    # TODO
-    pass
+    def __init__(self, amount, currency = "GBP"):
+        self.currency = currency
+        self.amount = amount
 
+    def __repr__(self):
+        return f"Money({self.amount!r}, {self.currency!r})"
+
+    def __str__(self):
+        return f"{self.amount:.2f} {self.currency}"
+
+    def __eq__(self, other):
+        if not isinstance(other, Money):
+            return NotImplemented
+        return self.currency == other.currency and self.amount == other.amount
+
+    def __hash__(self):
+        return hash((self.currency, self.amount))
+
+    def __lt__(self, other):
+        """Order by amount. Currencies must match — there is no exchange rate
+        here, so comparing GBP with USD is meaningless rather than False."""
+        if not isinstance(other, Money):
+            return NotImplemented
+        if self.currency != other.currency:
+            raise ValueError(f"cannot compare {self.currency} with {other.currency}")
+        return self.amount < other.amount
+
+    def __add__(self, other):
+        if not isinstance(other, Money):
+            return NotImplemented
+        if self.currency != other.currency:
+            raise ValueError(
+                f"cannot add {self.currency} to {other.currency}"
+            )
+        # a NEW Money — arithmetic never mutates its operands
+        return Money(self.amount + other.amount, self.currency)
 
 class BadMoney:
     def __init__(self, amount):

@@ -11,11 +11,9 @@ Load the `tutor` skill, then close topic $ARGUMENTS.
    whether the time scaled linearly or squared. Do not take the claim on trust.
 3. Review beyond correctness — function not script, `__main__` guard,
    preconditions documented, plain types returned, naming, repeated work in loops.
-4. Check `NOTES.md` for this topic: accurate, in their words, and recording what
-   they got wrong. Push back if it only records what became easy.
-5. Confirm `reference/NN-topic.md` exists and that anything from the discussion
+4. Confirm `reference/NN-topic.md` exists and that anything from the discussion
    worth keeping is in it — the transcript will not survive.
-6. Tick the topic's box in `CURRICULUM.md`.
-7. Commit and push to the step branch. One commit, named for the topic.
+5. Tick the topic's box in `CURRICULUM.md`.
+6. Commit and push to the step branch. One commit, named for the topic.
 
 Then name the next topic in the step. Do not start it.

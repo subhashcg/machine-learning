@@ -9,13 +9,20 @@ self.items = [x] would not.
 
 
 class Basket:
-    # TODO — items at CLASS level
-    pass
+    items = []
 
+    def add(self, item):
+        self.items.append(item)
 
 class BasketOk:
-    # TODO — items built per instance in __init__
-    pass
+
+    items = []
+
+    def __init__(self):
+        self.items = []
+
+    def add(self, item):
+        self.items.append(item)
 
 
 # TODO: comment — read falls through to the class, write lands on the instance
@@ -56,10 +63,12 @@ def _not_shared():
 
 
 def _rebind_makes_instance_attr():
+    before = list(Basket.items)          # the class list is shared across checks too
     x = Basket()
     x.items = ["own"]
     assert "items" in x.__dict__, "assignment should create an instance attribute"
-    assert Basket.items == [], f"the class list should be untouched, got {Basket.items}"
+    assert x.items == ["own"], f"the instance should hold its own list, got {x.items}"
+    assert Basket.items == before, f"the class list should be untouched, got {Basket.items}"
 
 
 if __name__ == "__main__":

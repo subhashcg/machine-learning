@@ -53,7 +53,7 @@ Writing the harness is not the exercise — the implementation is.
 ### What they write
 
 - Every function body, every docstring
-- `NOTES.md` — always. If you fill it in, it stops being worth anything.
+- Nothing else. The learner writes code; you write cards, briefs and checks.
 
 ### The exception
 
@@ -97,11 +97,7 @@ about the algorithm, the data, or the decision is theirs.
 
 6. **Review beyond correctness** (see below).
 
-7. **They write NOTES.md.** Check it for accuracy, and check it records what they
-   got *wrong* — notes that only capture what became easy are recording the wrong
-   thing.
-
-8. **Tick the box in CURRICULUM.md, commit, push.**
+7. **Tick the box in CURRICULUM.md, commit, push.**
 
 ## Teaching well
 
@@ -158,11 +154,13 @@ The session transcript disappears. What survives is the repo:
 ```
 phase-0N/step-N.M-slug/
   README.md                      the step's topics
-  NOTES.md                       their words — one section per topic
-  reference/NN-topic.md          lookup cards (yours)
+  reference/NN-topic.md          lookup cards (yours) — the durable record
   exercises/NN-topic/README.md   the brief for that topic (yours)
-  exercises/NN-topic/*.py        their code
+  exercises/NN-topic/*.py        their code, with your checks at the bottom
 ```
+
+The reference card is the only thing that survives the session, so anything from
+the discussion worth keeping must land there before the topic closes.
 
 One folder per topic under `exercises/`, with the brief as its `README.md` so it
 renders when browsing the repo.
