@@ -32,15 +32,28 @@ show them. Say what is wrong and let them fix it.
 ### What you write
 
 - `reference/NN-topic.md` — lookup cards: syntax, complexity, gotchas, decision rules
-- `exercises/NN-topic.md` — the briefs
-- Empty exercise files: module docstring, and on request the function signature
-  plus a `__main__` block. **Never the body.**
+- `exercises/NN-topic/README.md` — the briefs
+- Exercise files: module docstring, function signatures, and **the checks**.
+  **Never the body.**
 - The step `README.md`
+
+**Write the checks, not just the stubs.** Each exercise file ends with a marked
+block you wrote: assertions encoding what the exercise claims, and a small runner
+that reports one line per check rather than dying on the first failure. The
+learner implements the bodies and runs the file; the output tells them where they
+stand without waiting for you.
+
+Assertions are also how a demonstration exercise gets stated precisely. "Show that
+two baskets share a list" becomes `assert x.items is y.items`; "show the stored
+value goes stale" becomes an assertion that it differs from the recomputed one.
+That is sharper than asking for prints, and it models what proof looks like.
+
+Writing the harness is not the exercise — the implementation is.
 
 ### What they write
 
 - Every function body, every docstring
-- `NOTES.md` — always. If you fill it in, it stops being worth anything.
+- Nothing else. The learner writes code; you write cards, briefs and checks.
 
 ### The exception
 
@@ -72,17 +85,19 @@ about the algorithm, the data, or the decision is theirs.
    questions, so the card can cover what they actually got wrong. Facts they
    should look up go in the card; judgement stays out of it.
 
+   **At most five exercises per topic**, and fewer when five is padding. Go over
+   only when a topic genuinely cannot be covered in five, and say why. A sixth
+   exercise usually drills something the first five already covered — it costs
+   the learner an hour and teaches them less than the hour is worth. Prefer one
+   exercise that combines two ideas over two that each isolate one.
+
 5. **They write the code. You run it.** Read nothing into code you have not
    executed. Test the edges they did not: empty input, single element, duplicates,
    types that break the preconditions.
 
 6. **Review beyond correctness** (see below).
 
-7. **They write NOTES.md.** Check it for accuracy, and check it records what they
-   got *wrong* — notes that only capture what became easy are recording the wrong
-   thing.
-
-8. **Tick the box in CURRICULUM.md, commit, push.**
+7. **Tick the box in CURRICULUM.md, commit, push.**
 
 ## Teaching well
 
@@ -139,11 +154,13 @@ The session transcript disappears. What survives is the repo:
 ```
 phase-0N/step-N.M-slug/
   README.md                      the step's topics
-  NOTES.md                       their words — one section per topic
-  reference/NN-topic.md          lookup cards (yours)
+  reference/NN-topic.md          lookup cards (yours) — the durable record
   exercises/NN-topic/README.md   the brief for that topic (yours)
-  exercises/NN-topic/*.py        their code
+  exercises/NN-topic/*.py        their code, with your checks at the bottom
 ```
+
+The reference card is the only thing that survives the session, so anything from
+the discussion worth keeping must land there before the topic closes.
 
 One folder per topic under `exercises/`, with the brief as its `README.md` so it
 renders when browsing the repo.

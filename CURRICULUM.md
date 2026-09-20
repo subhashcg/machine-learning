@@ -103,14 +103,14 @@ are the branch worth keeping tidy, since these are the ones other people read.
 
 `git switch -c step/0.1-the-language`
 
-- [ ] **Data structures** — list, dict, set, tuple: what each costs and when to reach for it
-- [ ] **Comprehensions and generators** — `yield`, iterators, and why lazy evaluation matters on big data
-- [ ] **Functions** — `*args`/`**kwargs`, closures, scope, and the mutable-default trap
-- [ ] **Classes** — `__init__`, dunder methods, `@property`, and `@dataclass`
-- [ ] **Modules and packages** — imports, `__main__`, how a project is laid out
-- [ ] **Exceptions** — try/except/finally, custom exceptions, failing loudly and usefully
-- [ ] **Files and formats** — context managers, `pathlib`, csv, json
-- [ ] **Type hints** — what they buy you and what they don't
+- [x] **Data structures** — list, dict, set, tuple: what each costs and when to reach for it
+- [x] **Comprehensions and generators** — `yield`, iterators, and why lazy evaluation matters on big data
+- [x] **Functions** — `*args`/`**kwargs`, closures, scope, and the mutable-default trap
+- [x] **Classes** — `__init__`, dunder methods, `@property`, `@dataclass`, inheritance and when to compose instead
+- [x] **Modules and packages** — imports, `__main__`, how a project is laid out
+- [x] **Exceptions** — try/except/finally, custom exceptions, failing loudly and usefully
+- [x] **Files and formats** — context managers, `pathlib`, csv, json
+- [x] **Type hints** — what they buy you and what they don't
 
 ### Step 0.2 — Working like an engineer
 
