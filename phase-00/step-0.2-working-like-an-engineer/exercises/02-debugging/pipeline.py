@@ -8,7 +8,7 @@ these functions are SUPPOSED to do.
 
 def parse_row(line):
     """Parse 'name,qty,price' into a dict with typed values."""
-    name, qty, price = line.split(",")
+    name, qty, price = (part.strip() for part in line.split(","))
     return {"name": name, "qty": int(qty), "price": float(price)}
 
 
@@ -39,6 +39,7 @@ def apply_discount(rows, percent, minimum_qty=10):
     """
     out = []
     for row in rows:
+        row = dict(row)
         if row["qty"] >= minimum_qty:
             row["price"] = row["price"] * (1 - percent / 100)
         out.append(row)
@@ -47,12 +48,14 @@ def apply_discount(rows, percent, minimum_qty=10):
 
 def summarise(rows, top=3):
     """The `top` rows by total value (qty * price), highest first."""
-    ranked = sorted(rows, key=lambda r: r["qty"] * r["price"])
+    ranked = sorted(rows, key=lambda r: r["qty"] * r["price"], reverse=True)
     return ranked[:top]
 
 
-def running_totals(rows, totals=[]):
+def running_totals(rows, totals=None):
     """A running cumulative total of qty * price, one entry per row."""
+    if totals is None:
+        totals = []
     running = 0
     for row in rows:
         running += row["qty"] * row["price"]
