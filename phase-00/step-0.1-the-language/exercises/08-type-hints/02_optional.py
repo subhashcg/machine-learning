@@ -14,19 +14,20 @@ the difference visible at runtime.
 USERS = {"u1": {"name": "Bo"}}
 
 
-def find_user(users, uid):
-    # TODO
-    raise NotImplementedError
+def find_user(users: dict[str, dict[str, str]], uid: str) -> dict[str, str] | None:
+    return users.get(uid)
 
 
-def greet_unsafe(users, uid):
-    # TODO — index the result without checking
-    raise NotImplementedError
+def greet_unsafe(users: dict[str, dict[str, str]], uid: str) -> str:
+    user = find_user(users, uid)
+    return f"hello {user['name']}"      # None is not subscriptable: TypeError
 
 
-def greet_safe(users, uid):
-    # TODO — narrow with `if ... is None` (or `is not None`)
-    raise NotImplementedError
+def greet_safe(users: dict[str, dict[str, str]], uid: str) -> str:
+    user = find_user(users, uid)
+    if user is None:                    # narrowing: below here it is a dict
+        return "hello unknown"
+    return f"hello {user['name']}"
 
 
 # ---------------------------------------------------------------- checks

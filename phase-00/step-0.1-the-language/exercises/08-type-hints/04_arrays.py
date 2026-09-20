@@ -20,9 +20,34 @@ Write the docstring saying what shape it expects and what NaN means.
 import math
 
 
-def normalise(rows):
-    # TODO — annotate, assert the shape, then compute
-    raise NotImplementedError
+def normalise(rows: list[list[float]]) -> list[list[float]]:
+    """Standardise each column of a table of shape (n_samples, n_features).
+
+    Subtracts the column mean and divides by the population std, so each column
+    ends up with mean 0 and std 1. Shape is preserved.
+
+    The hint `list[list[float]]` cannot say any of that, so it is checked here:
+    at least one row, and every row the same length, else ValueError.
+
+    A constant column has std 0, so its output is NaN. That is left visible on
+    purpose — it means "this feature carries no information", and silently
+    substituting 0 would hide a broken feature.
+    """
+    if not rows:
+        raise ValueError("need at least one row")
+    width = len(rows[0])
+    if any(len(row) != width for row in rows):
+        raise ValueError(f"ragged table: rows have lengths {sorted({len(r) for r in rows})}")
+
+    n = len(rows)
+    out = [[0.0] * width for _ in range(n)]
+    for col in range(width):
+        column = [row[col] for row in rows]
+        mean = sum(column) / n
+        std = math.sqrt(sum((x - mean) ** 2 for x in column) / n)   # population std
+        for i, x in enumerate(column):
+            out[i][col] = (x - mean) / std if std else math.nan
+    return out
 
 
 # ---------------------------------------------------------------- checks

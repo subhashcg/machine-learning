@@ -13,30 +13,29 @@ result, to show Python does not care.
 """
 
 
-def word_count(text):
-    # TODO — annotate and implement
-    raise NotImplementedError
+def word_count(text: str) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for word in text.split():
+        counts[word] = counts.get(word, 0) + 1
+    return counts
 
 
-def first_or_none(items):
-    # TODO
-    raise NotImplementedError
+def first_or_none(items: list[int]) -> int | None:
+    return items[0] if items else None
 
 
-def scale(xs, factor):
-    # TODO
-    raise NotImplementedError
+def scale(xs: list[float], factor: float) -> list[float]:
+    return [x * factor for x in xs]
 
 
-def shout(text, times=1):
-    # TODO
-    raise NotImplementedError
+def shout(text: str, times: int = 1) -> str:
+    # `times` always gets an int — the default supplies one, so it is not `int | None`
+    return text.upper() * times
 
 
 def ignores_types():
     """Call scale() with a list of strings and return whatever comes back."""
-    # TODO
-    raise NotImplementedError
+    return scale(["a", "b"], 2)     # mypy objects; Python runs it and gives ["aa", "bb"]
 
 
 # ---------------------------------------------------------------- checks

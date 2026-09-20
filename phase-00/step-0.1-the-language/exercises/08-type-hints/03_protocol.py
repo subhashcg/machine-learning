@@ -17,22 +17,32 @@ because backup never calls load — which is exactly why the static check matter
 from typing import Protocol, runtime_checkable
 
 
-# TODO: Store — make it @runtime_checkable so the checks can test it
+@runtime_checkable
+class Store(Protocol):
+    def save(self, key: str, value: str) -> None: ...
+    def load(self, key: str) -> str | None: ...
 
 
-class MemoryStore:
-    # TODO — must NOT inherit from Store
-    pass
+class MemoryStore:                      # no base class: structure is enough
+    def __init__(self) -> None:
+        self._data: dict[str, str] = {}
+
+    def save(self, key: str, value: str) -> None:
+        self._data[key] = value
+
+    def load(self, key: str) -> str | None:
+        return self._data.get(key)
 
 
 class WriteOnly:
-    # TODO — save() only
-    pass
+    def save(self, key: str, value: str) -> None:
+        pass
 
 
-def backup(store, data):
-    # TODO — annotate store as Store; save each item; return the count
-    raise NotImplementedError
+def backup(store: Store, data: dict[str, str]) -> int:
+    for key, value in data.items():
+        store.save(key, value)
+    return len(data)
 
 
 # ---------------------------------------------------------------- checks
@@ -62,8 +72,11 @@ def _memory_store_round_trips():
 
 
 def _satisfies_without_inheriting():
-    assert not issubclass(MemoryStore, Store), (
-        "MemoryStore must NOT inherit from Store — that is the point of a Protocol"
+    # issubclass() on a runtime_checkable Protocol is ALSO structural, so it
+    # cannot answer "did it inherit?" — look at the MRO instead.
+    assert Store not in MemoryStore.__mro__, (
+        f"MemoryStore must NOT inherit from Store — that is the point of a "
+        f"Protocol. Its MRO is {[c.__name__ for c in MemoryStore.__mro__]}"
     )
     assert isinstance(MemoryStore(), Store), "but it should still satisfy it"
 
