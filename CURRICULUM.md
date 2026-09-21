@@ -118,7 +118,7 @@ are the branch worth keeping tidy, since these are the ones other people read.
 
 - [x] **pytest** — test functions, fixtures, `parametrize`, and what's worth testing
 - [x] **Debugging** — reading a traceback properly, `breakpoint()`, stepping through code
-- [ ] **Environments** — `uv`, virtual environments, `pyproject.toml`, pinned dependencies
+- [x] **Environments** — `uv`, virtual environments, `pyproject.toml`, pinned dependencies
 - [ ] **git** — branch, commit, diff, merge, and writing a message worth reading
 - [ ] **Readable code** — naming, small functions, when a comment earns its place
 
