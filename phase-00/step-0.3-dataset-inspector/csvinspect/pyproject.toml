@@ -1,0 +1,16 @@
+[project]
+name = "csvinspect"
+version = "0.1.0"
+description = "Tell me what is in this CSV, before I load it into anything"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+csv-inspect = "csvinspect.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = ["pytest>=8"]

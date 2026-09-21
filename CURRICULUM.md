@@ -123,7 +123,7 @@ is taught continuously through review rather than as a topic of its own.*
 - [x] **Debugging** — reading a traceback properly, `breakpoint()`, stepping through code
 - [x] **Environments** — `uv`, virtual environments, `pyproject.toml`, pinned dependencies
 
-### Step 0.3 — 🔨 Project: A command-line dataset inspector
+### Step 0.3 — 🔨 Project: A command-line dataset inspector  ✅
 
 `git switch -c step/0.3-project-a-command-line-dataset-inspector`
 
