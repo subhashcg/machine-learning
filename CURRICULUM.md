@@ -116,11 +116,12 @@ are the branch worth keeping tidy, since these are the ones other people read.
 
 `git switch -c step/0.2-working-like-an-engineer`
 
-- [ ] **pytest** — test functions, fixtures, `parametrize`, and what's worth testing
-- [ ] **Debugging** — reading a traceback properly, `breakpoint()`, stepping through code
-- [ ] **Environments** — `uv`, virtual environments, `pyproject.toml`, pinned dependencies
-- [ ] **git** — branch, commit, diff, merge, and writing a message worth reading
-- [ ] **Readable code** — naming, small functions, when a comment earns its place
+*git and readable code were dropped: git was already familiar, and readable code
+is taught continuously through review rather than as a topic of its own.*
+
+- [x] **pytest** — test functions, fixtures, `parametrize`, and what's worth testing
+- [x] **Debugging** — reading a traceback properly, `breakpoint()`, stepping through code
+- [x] **Environments** — `uv`, virtual environments, `pyproject.toml`, pinned dependencies
 
 ### Step 0.3 — 🔨 Project: A command-line dataset inspector
 
