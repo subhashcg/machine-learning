@@ -3,8 +3,11 @@
 Phase 0, *Python that holds up*
 
 > Step 0.1 was the language. This is everything around it: proving code works,
-> finding out why it doesn't, keeping the environment reproducible, and leaving
-> a history someone can follow.
+> finding out why it doesn't, and keeping the environment reproducible.
+
+*git and readable code were dropped from this step: git was already familiar,
+and readable code is taught continuously through review rather than as a topic
+of its own.*
 
 ## Topics
 
@@ -13,8 +16,6 @@ Phase 0, *Python that holds up*
 | 1 | pytest | test functions, fixtures, `parametrize`, and what's worth testing |
 | 2 | Debugging | reading a traceback properly, `breakpoint()`, stepping through code |
 | 3 | Environments | `uv`, virtual environments, `pyproject.toml`, pinned dependencies |
-| 4 | git | branch, commit, diff, merge, and writing a message worth reading |
-| 5 | Readable code | naming, small functions, when a comment earns its place |
 
 ## How we work a topic
 

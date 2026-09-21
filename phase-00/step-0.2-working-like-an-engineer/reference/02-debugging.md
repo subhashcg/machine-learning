@@ -156,7 +156,41 @@ Or in a live session: `b 42, row["id"] == "bad-id"`.
 
 When nothing raises and the *value* is merely wrong, none of that helps —
 **bisect**. Check the halfway point, see which half is already wrong, halve
-again. Twelve checks find one bad row in 40,000. Same idea as `git bisect`.
+again. Twelve checks find one bad row in 40,000.
+
+---
+
+## git bisect — the same idea applied to history
+
+"It worked last month and it is broken now, and there are 300 commits between."
+Same search, over commits instead of rows.
+
+```bash
+git bisect start
+git bisect bad                  # HEAD is broken
+git bisect good v1.2            # this tag was fine
+# git checks out the midpoint; test it, then say which it was:
+git bisect good                 # ...or: git bisect bad
+# repeat until git names the first bad commit
+git bisect reset                # back to where you were
+```
+
+300 commits takes **~8 steps**, not 300 — log2(300).
+
+Automate it when the test is a command:
+
+```bash
+git bisect start HEAD v1.2
+git bisect run uv run pytest -x -q tests/test_thing.py
+```
+
+`run` takes an exit status: 0 = good, non-zero = bad. Git drives the whole
+search and prints the first bad commit unattended. This is where a fast,
+deterministic test pays for itself twice over.
+
+Caveat: every commit in the range must be buildable and testable. A history of
+broken intermediate commits cannot be bisected — which is an argument for
+commits that each leave the tree working.
 
 ---
 
